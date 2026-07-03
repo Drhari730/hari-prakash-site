@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr G. Hari Prakash | Digital Health Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Dr G. <span>Hari Prakash</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#positions">Experience</a></li>
+    <li><a href="#grants">Grants</a></li>
+    <li><a href="#inventions">Inventions</a></li>
+    <li><a href="#ncd-suite">NCD Suite</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#conferences">Conferences</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="/cv.pdf" class="nav-cta">Download CV</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow" id="heroEyebrow"></div>
+      <h1 id="heroName"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-tags" id="heroTags"></div>
+      <div class="hero-actions">
+        <a href="#publications" class="btn-primary">View Publications</a>
+        <a href="/cv.pdf" class="btn-outline">Download CV (PDF)</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Research Snapshot</h3>
+      <div class="stat-rows" id="heroStats"></div>
+      <div class="hero-contact" id="heroContact"></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="inner">
+    <div class="sec-label">About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="sec-title">Research Profile</h2>
+        <div class="about-text" id="aboutText"></div>
+        <div class="interests-grid" id="interestsGrid"></div>
+      </div>
+      <div class="about-sidebar">
+        <div class="info-card">
+          <h4>Education</h4>
+          <div id="educationList"></div>
+        </div>
+        <div class="info-card">
+          <h4>Technical Skills</h4>
+          <ul class="skills-list" id="skillsList"></ul>
+        </div>
+        <div class="info-card">
+          <h4>Affiliations & Service</h4>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;" id="affiliationsList"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="positions">
+  <div class="inner">
+    <div class="sec-label">Experience</div>
+    <h2 class="sec-title">Academic & Professional Positions</h2>
+    <div class="positions-list" id="positionsList"></div>
+  </div>
+</section>
+
+<section id="grants">
+  <div class="inner">
+    <div class="sec-label">Funding</div>
+    <h2 class="sec-title">Grants & Fellowships</h2>
+    <p class="sec-desc">Competitive grants and international travel fellowships recognising the quality and impact of this research programme.</p>
+    <div class="grants-grid" id="grantsGrid"></div>
+  </div>
+</section>
+
+<section id="inventions">
+  <div class="inner">
+    <div class="sec-label" style="color:var(--gold)">Digital Health Tools</div>
+    <h2 class="sec-title">Inventions & Platforms</h2>
+    <p class="sec-desc" style="color:rgba(253,248,238,.65)">Deployed applications, clinical tools, and research platforms built and led by Dr Hari Prakash.</p>
+    <div class="inv-grid" id="inventionsGrid"></div>
+    <div class="patent-strip fade-up" id="patentStrip"></div>
+  </div>
+</section>
+
+<section id="ncd-suite">
+  <div class="inner">
+    <div class="sec-label">Translational Portfolio</div>
+    <h2 class="sec-title">NCD Digital Health Suite</h2>
+    <p class="sec-desc">A growing family of condition-specific mHealth apps addressing India's leading non-communicable disease burden.</p>
+    <div class="ncd-grid" id="ncdGrid"></div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="inner">
+    <div class="sec-label">Scholarship</div>
+    <h2 class="sec-title">Publications <span id="pubCountLabel" style="font-size:1.1rem;color:var(--muted);font-family:'DM Sans',sans-serif;font-weight:400"></span></h2>
+    <p class="sec-desc">Research output spanning oncology, digital health, public health, non-communicable diseases, oral health, and medical education.</p>
+    <div class="pub-filters" id="pubFilters"></div>
+    <div class="pub-list" id="pubList"></div>
+  </div>
+</section>
+
+<section id="conferences">
+  <div class="inner">
+    <div class="sec-label">Dissemination</div>
+    <h2 class="sec-title">Conference Presentations</h2>
+    <p class="sec-desc">International and national presentations across oncology, digital health, and public health forums.</p>
+    <div class="conf-grid" id="confGrid"></div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="inner">
+    <div class="sec-label">Academia</div>
+    <h2 class="sec-title">Teaching & Supervision</h2>
+    <p class="sec-desc">Active contributions to postgraduate education, student mentorship, and capacity building.</p>
+    <div class="teaching-grid">
+      <div class="teaching-card fade-up">
+        <h4>MPH Courses Taught</h4>
+        <ul id="coursesList"></ul>
+      </div>
+      <div class="teaching-card fade-up">
+        <h4>Thesis Supervision</h4>
+        <p id="thesisSupervisionText"></p>
+      </div>
+      <div class="teaching-card fade-up">
+        <h4>Invited Resource Person</h4>
+        <p id="resourcePersonText"></p>
+      </div>
+      <div class="teaching-card fade-up">
+        <h4>Certifications</h4>
+        <ul id="certsList"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="inner">
+    <div class="sec-label" style="color:var(--gold);text-align:center">Get in Touch</div>
+    <h2 class="sec-title" style="text-align:center">Contact</h2>
+    <div class="contact-grid" id="contactGrid"></div>
+  </div>
+</section>
+
+<footer id="footerText"></footer>
+
+<script id="site-data" type="application/json">"__SITE_DATA__"</script>
+<script src="/app.js"></script>
+</body>
+</html>

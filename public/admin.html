@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Dr G. Hari Prakash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #faf6ee; color: #2b2320; margin: 0; padding: 0; }
+  header { background: #591f1f; color: #fdf8ee; padding: 18px 5vw; display: flex; align-items: center; justify-content: space-between; }
+  header h1 { font-family: 'Lora', serif; font-size: 1.2rem; margin: 0; }
+  header a, header button { color: #fdf8ee; background: transparent; border: 1px solid rgba(255,255,255,.3); padding: 7px 14px; border-radius: 6px; font-size: .82rem; cursor: pointer; text-decoration: none; }
+  main { max-width: 900px; margin: 0 auto; padding: 40px 5vw; }
+
+  #loginView { max-width: 380px; margin: 80px auto; background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
+  #loginView h2 { font-family: 'Lora', serif; margin-bottom: 20px; color: #591f1f; }
+  #loginView label { display: block; font-size: .82rem; margin-bottom: 6px; color: #6f6255; }
+  #loginView input { width: 100%; padding: 10px 12px; margin-bottom: 16px; border: 1px solid #e6dcc8; border-radius: 6px; font-size: .9rem; }
+  #loginView button { width: 100%; padding: 11px; background: #7a2e2e; color: #fff; border: none; border-radius: 6px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+  #loginError { color: #b91c1c; font-size: .82rem; margin-top: 10px; min-height: 1.2em; }
+
+  .section-block { background: #fff; border: 1px solid #e6dcc8; border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+  .section-block h3 { font-family: 'Lora', serif; color: #591f1f; margin: 0 0 4px; }
+  .section-block .hint { font-size: .78rem; color: #6f6255; margin-bottom: 16px; }
+  .item-card { border: 1px solid #eee0c8; border-radius: 8px; padding: 14px; margin-bottom: 12px; background: #faf6ee; position: relative; }
+  .item-card label { display: block; font-size: .72rem; color: #6f6255; margin: 8px 0 3px; text-transform: uppercase; letter-spacing: .04em; }
+  .item-card input, .item-card textarea, .item-card select { width: 100%; padding: 7px 9px; border: 1px solid #e6dcc8; border-radius: 5px; font-size: .85rem; font-family: inherit; }
+  .item-card textarea { min-height: 50px; resize: vertical; }
+  .del-btn { position: absolute; top: 10px; right: 10px; background: #f4e4e0; color: #7a2e2e; border: none; border-radius: 5px; width: 24px; height: 24px; cursor: pointer; font-size: .8rem; }
+  .btn-row { display: flex; gap: 10px; margin-top: 10px; }
+  .add-btn { background: #f4e4e0; color: #7a2e2e; border: 1px dashed #b6893c; padding: 8px 16px; border-radius: 6px; font-size: .82rem; cursor: pointer; }
+  .save-btn { background: #7a2e2e; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: .82rem; cursor: pointer; font-weight: 600; }
+  .save-msg { font-size: .8rem; color: #3f5d43; margin-left: 10px; }
+  .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .tab-btn { background: #f2e9d8; border: 1px solid #e6dcc8; padding: 8px 16px; border-radius: 20px; font-size: .82rem; cursor: pointer; }
+  .tab-btn.active { background: #7a2e2e; color: #fff; border-color: #7a2e2e; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Site Admin — Dr G. Hari Prakash</h1>
+  <div id="headerActions" style="display:flex; gap:10px;">
+    <a href="/" target="_blank">View site</a>
+    <button id="logoutBtn" style="display:none">Log out</button>
+  </div>
+</header>
+
+<div id="loginView">
+  <h2>Admin Login</h2>
+  <label for="email">Email</label>
+  <input id="email" type="email" autocomplete="username">
+  <label for="password">Password</label>
+  <input id="password" type="password" autocomplete="current-password">
+  <button id="loginBtn">Log in</button>
+  <div id="loginError"></div>
+</div>
+
+<main id="dashboardView" style="display:none">
+  <div class="tabs" id="tabs"></div>
+  <div id="panels"></div>
+</main>
+
+<script src="/admin.js"></script>
+</body>
+</html>

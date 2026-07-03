@@ -1,0 +1,177 @@
+{
+  "profile": {
+    "name": "Dr G. Hari Prakash",
+    "credentials": "PhD (Public Health) · Pharm.D · MPH",
+    "eyebrow": "Digital Health · mHealth · Oncology",
+    "tagline": "Translating implementation science into scalable, equitable digital health solutions for cancer and chronic disease management globally.",
+    "tags": ["mHealth Intervention Design", "Clinical Epidemiology", "Oncology Care", "LMIC Research", "Health Technology Assessment", "AI for Health"],
+    "stats": [
+      { "num": "43", "label": "Peer-reviewed publications across oncology, digital health, public health & medical education" },
+      { "num": "10", "label": "Digital health tools & platforms built or co-led" },
+      { "num": "1", "label": "Published Indian patent" }
+    ],
+    "email": "hariprakash607@gmail.com",
+    "phone": "+91 7306789341",
+    "orcid": "0000-0002-9463-4084",
+    "scholarUrl": "",
+    "scopusUrl": ""
+  },
+  "about": {
+    "paragraphs": [
+      "Clinical pharmacist and public health researcher with a **PhD in Public Health**, specialising in **digital health innovation, mHealth intervention design,** and cancer care delivery in low- and middle-income settings.",
+      "Author of **43 peer-reviewed publications** spanning oncology, digital health, public health, and medical education — including first-author work in **Annals of Oncology (IF 56.7)**, ESMO Open, and Journal of Oncology Pharmacy Practice — alongside 1 granted patent and multiple deployed digital health tools with active user bases.",
+      "Research expertise spans the full intervention lifecycle: user-centred co-design, psychometric scale development, quasi-experimental and target-trial emulation methods, health technology assessment, and machine-learning-assisted clinical decision support. Recognised by competitive international awards including **ESMO and JSMO Travel Grants**.",
+      "Committed to translating rigorous implementation science into scalable, equitable digital health solutions for cancer and chronic disease management globally."
+    ],
+    "interests": [
+      "Digital Health Intervention Design", "mHealth / eHealth", "User-Centred Co-design", "Cancer Care Delivery",
+      "Treatment Adherence", "Patient-Reported Outcomes", "Scale Development (EFA/CFA)", "Health Technology Assessment",
+      "Cost-Utility Analysis", "Machine Learning & AI", "Target Trial Emulation", "Implementation Science",
+      "Digital Health Equity", "LMIC Research", "Scoping & Systematic Reviews"
+    ]
+  },
+  "education": [
+    { "degree": "PhD in Public Health", "institution": "JSS Medical College, JSS AHER, Mysuru", "years": "2021 – 2024", "thesis": "Medical Technology-Based Smartphone Application in Cancer Management" },
+    { "degree": "Master of Public Health (MPH)", "institution": "JSS Medical College, JSS AHER, Mysuru", "years": "2019 – 2021", "thesis": "" },
+    { "degree": "Doctor of Pharmacy (Pharm.D)", "institution": "JNTU Anantapur, Andhra Pradesh", "years": "2013 – 2019", "thesis": "" }
+  ],
+  "skills": [
+    { "name": "mHealth App Co-design & UCD", "level": "Expert", "pct": 95 },
+    { "name": "Scale Development (EFA/CFA)", "level": "Expert", "pct": 92 },
+    { "name": "Statistical Software (SPSS, Python, Jamovi)", "level": "Advanced", "pct": 88 },
+    { "name": "Systematic Review & Meta-analysis", "level": "Advanced", "pct": 90 },
+    { "name": "Health Technology Assessment", "level": "Advanced", "pct": 85 },
+    { "name": "Machine Learning (RF, XGBoost)", "level": "Intermediate", "pct": 75 }
+  ],
+  "affiliations": [
+    "Associate Editor, Archives of Public Health (BMC / Springer Nature)",
+    "Associate Editor, Clinical Epidemiology and Global Health (Elsevier)",
+    "Member, European Society of Medical Oncology (ESMO)"
+  ],
+  "positions": [
+    {
+      "years": "2024 – Present",
+      "role": "Assistant Professor",
+      "org": "Division of Public Health, MS Ramaiah University of Applied Sciences (MSRUAS), Bengaluru",
+      "bullets": ["Teaching MPH programme: Research Methodology, Biostatistics, Ethics in Public Health, Technology in Public Health, NCDs & Nutrition, Qualitative Methods"]
+    },
+    {
+      "years": "Nov 2024 – Jul 2025",
+      "role": "Scientist-D / Senior Research Officer",
+      "org": "Department of Community Medicine & School of Public Health, PGIMER, Chandigarh",
+      "bullets": ["Developed Health Technology Assessment (HTA) online course for ICMR", "Conducted research on digital health interventions and AI for primordial prevention and disease screening"]
+    },
+    {
+      "years": "Feb 2022 – Apr 2022",
+      "role": "Field Investigator (Consultant) — World Health Organization",
+      "org": "JSS Medical College, Mysuru",
+      "bullets": ["Coordinated multi-centre study on oxygen requirements and respiratory support in COVID-19 patients in LMICs"]
+    },
+    {
+      "years": "Mar – Apr 2021",
+      "role": "Internship",
+      "org": "Indian Council of Medical Research (ICMR)",
+      "bullets": []
+    }
+  ],
+  "grants": [
+    { "amount": "INR 25,000", "name": "JSS AHER Research Fellowship", "desc": "Medical Technology-Based Smartphone Application in the Management of Cancer", "years": "2021 – 2024" },
+    { "amount": "Institutional Grant", "name": "JSSAHER Institutional Research Grant", "desc": "Onco-Care User-Centred Design Study · Ref: JSSAHER/REG/RES/URG/54/2023-24/7931", "years": "2023 – 2024" },
+    { "amount": "INR 1,00,000", "name": "Mamta HIMC Fellowship in Adolescent Mental Health", "desc": "Digital Health Intervention on Adolescent Mental Health (AikyaMind)", "years": "2022 – 2023" },
+    { "amount": "EUR 1,400", "name": "ESMO Travel Grant", "desc": "European Society of Medical Oncology — ESMO Asia / Breast Cancer Conference, Germany", "years": "2024 – 2025" },
+    { "amount": "JPY 1,00,000", "name": "JSMO Travel Grant", "desc": "Japanese Society of Medical Oncology — JSMO Annual Meeting, Japan", "years": "2024" }
+  ],
+  "patent": {
+    "text": "Hari Prakash G, Kumar SD, Yadav D, Sunitha S. A reflection-based intraoral imaging device for dental examination and a method of operating the device. Indian Patent Application No. 202541003820. Published January 31, 2025."
+  },
+  "inventions": [
+    { "icon": "📱", "name": "Onco Care App", "desc": "Comprehensive mHealth platform for cancer patients — remote monitoring, symptom tracking, chemotherapy planning, nutrition guidance, peer support.", "status": "live", "badge": "Google Play · onco-care.in", "link": "https://onco-care.in/" },
+    { "icon": "🧠", "name": "AikyaMind", "desc": "Adolescent mental health mHealth application — self-screening, counselling support, and educational resources.", "status": "live", "badge": "Google Play Store", "link": "" },
+    { "icon": "🔎", "name": "Prama AI", "desc": "AI-assisted collaborative systematic review & meta-analysis platform — PRISMA-adherent screening workflow, active learning, live team collaboration, forest and funnel plots.", "status": "live", "badge": "Web-based", "link": "https://pramana-server-production.up.railway.app" },
+    { "icon": "🕸️", "name": "Sangam NMA", "desc": "Network meta-analysis workbench built on R/netmeta — league tables, rankings, node-splitting, publication-ready manuscript export.", "status": "live", "badge": "Web-based", "link": "https://sangam-web-production.up.railway.app" },
+    { "icon": "💰", "name": "Artha HE", "desc": "Health-economics workbench — costing, cost-utility/cost-benefit analysis, Markov modelling, probabilistic sensitivity analysis, budget impact.", "status": "live", "badge": "Web-based", "link": "https://artha-he-production.up.railway.app" },
+    { "icon": "🗣️", "name": "Elix AI", "desc": "AI-assisted qualitative data analysis tool — thematic coding, transcript analysis, and synthesis support for qualitative and mixed-methods research.", "status": "development", "badge": "In Development", "link": "" },
+    { "icon": "📈", "name": "VEDA", "desc": "General-purpose data analysis software for researchers — cleaning, descriptive and inferential statistics, and visualisation in one workbench.", "status": "development", "badge": "In Development", "link": "" },
+    { "icon": "📊", "name": "SAM (Sample Size Calculator)", "desc": "Web-based sample size tool supporting 10+ study designs for researchers across disciplines.", "status": "live", "badge": "Web-based", "link": "" },
+    { "icon": "🩺", "name": "CRISP", "desc": "Colorectal Risk Intelligence & Screening Predictor — AI-powered clinical risk tool for colorectal cancer screening.", "status": "live", "badge": "crisp_ai.oneapp.dev", "link": "" },
+    { "icon": "⌚", "name": "Smart Wearable for Muscle Health", "desc": "Wearable prototype for detecting early signs of muscle wasting and fatigue in cancer care and rehabilitation.", "status": "prototype", "badge": "IIT Bombay MEDHA 2023", "link": "" }
+  ],
+  "ncdSuite": [
+    { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app — glucose logging, medication reminders, diet guidance.", "status": "development", "link": "https://github.com/Drhari730/Glydecare" },
+    { "condition": "Hypertension", "icon": "❤️", "name": "BP-Mitra", "desc": "Hypertension risk prediction and blood-pressure tracking app for personalised prevention.", "status": "live", "link": "https://github.com/Drhari730/BP-Mitra" },
+    { "condition": "Anemia", "icon": "🩹", "name": "Anemia Care (planned)", "desc": "Screening and nutrition-support app for anemia management — in early planning.", "status": "planned", "link": "" },
+    { "condition": "Asthma", "icon": "🌬️", "name": "Asthma-Care", "desc": "Asthma management system — symptom tracking and trigger monitoring.", "status": "development", "link": "" },
+    { "condition": "COPD", "icon": "🫁", "name": "COPD Companion (planned)", "desc": "Respiratory symptom and exacerbation-risk tracker for COPD patients — in early planning.", "status": "planned", "link": "" },
+    { "condition": "Cancer", "icon": "🎗️", "name": "Onco-Care / Onco-diet", "desc": "Chemotherapy management platform (Onco-Care, live) plus a companion diet-recommendation app for oncology patients (Onco-diet, in development).", "status": "live", "link": "https://onco-care.in/" },
+    { "condition": "TB", "icon": "🫧", "name": "TB-Mitra", "desc": "Tuberculosis medication adherence and patient support app.", "status": "development", "link": "https://github.com/Drhari730/TB-Mitra" }
+  ],
+  "publications": [
+    { "title": "Cervical cancer and human papillomavirus (HPV) vaccination awareness among university students: A global scoping review of knowledge, attitudes, and barriers", "authors": "Shwetha CV, Prakash GH, Darukaradhya TB", "journal": "Journal of Oncology Pharmacy Practice", "year": "2026", "doi": "10.1177/10781552261446556", "cat": "oncology" },
+    { "title": "Digital PRO collection methods during chemotherapy: A scoping review of tools, platforms, and psychometric properties", "authors": "Prakash GH, Tejaswini BD, Sequeira S, Hussain MM, Nayak A", "journal": "Measurement and Evaluations in Cancer Care", "year": "2026", "vol": "4:100036", "doi": "10.1016/j.ymecc.2026.100036", "cat": "oncology" },
+    { "title": "From needs to app: A user-centred design approach for developing mobile health interventions in oncology care", "authors": "Prakash GH, Kumar DS, Arun V, et al", "journal": "Journal of Oncology Pharmacy Practice", "year": "2026", "doi": "10.1177/10781552261443469", "cat": "oncology" },
+    { "title": "Immortal time bias in contemporary CDK4/6 inhibitor studies: Evidence from target trial emulation", "authors": "Prakash GH, Kumar S, PK K, et al", "journal": "Journal of Oncology Pharmacy Practice", "year": "2026", "doi": "10.1177/10781552261425587", "cat": "oncology" },
+    { "title": "Economic evaluation of a digital health intervention for cancer care: Cost-utility analysis of the OncoCare app", "authors": "Prakash GH, Kumar Doddaiah S, Krishnamurthy KP, et al", "journal": "Journal of Oncology Pharmacy Practice", "year": "2026", "doi": "10.1177/10781552251409104", "cat": "oncology" },
+    { "title": "849P User-centred design and clinical validation of a comprehensive mobile health platform for enhanced chemotherapy management and treatment adherence", "authors": "Prakash GH, Kumar SD, Pk K, et al", "journal": "Annals of Oncology", "year": "2025", "doi": "", "cat": "oncology" },
+    { "title": "Factorial Validity and Reliability of the Chemotherapy Dietary Adherence Scale: A Tool for Nutritional Assessment in Cancer Care", "authors": "Prakash GH, Kumar SD, Pk K, Arun V, Yadav D, Shwethashree M, Gopi A, Kulkarni P", "journal": "Asian Pacific Journal of Cancer Care", "year": "2025", "vol": "9(3):1101-1108", "doi": "", "cat": "oncology" },
+    { "title": "Measuring Mobile Health Engagement in Cancer Care: Development and Psychometric Validation of the CMHEAQ Scale", "authors": "Prakash GH, Kumar SD, Pk K, et al", "journal": "Measurement and Evaluations in Cancer Care", "year": "2025", "doi": "", "cat": "oncology" },
+    { "title": "Enhancing Chemotherapy Adherence in Cancer Management: A Quasi-Experimental Trial of a Smartphone Application", "authors": "Prakash GH, Kumar SD, Pk K, Gopi A", "journal": "Cancer Investigation", "year": "2025", "doi": "", "cat": "oncology" },
+    { "title": "Digital Nutrition in Cancer Care: A Co-Design Approach to Transform Chemotherapy Patient Outcomes", "authors": "Prakash GH, Kumar SD, Yadav D", "journal": "Asian Pacific Journal of Cancer Care", "year": "2025", "vol": "10(4):1089-1091", "doi": "10.31557/APJCC.2025.10.4.1089-1091", "cat": "oncology" },
+    { "title": "422P Digital patient-reported outcomes in cancer care: Analysis of quality of life and symptom trajectories using a mobile health platform", "authors": "Prakash GH, Kumar DS, Pk K, Arun V, Yadav D, Gopi A, M S", "journal": "ESMO Open", "year": "2025", "vol": "10(Suppl 4):104994", "doi": "10.1016/j.esmoop.2025.104994", "cat": "oncology" },
+    { "title": "Development and validation of a web-based platform for streamlining chemotherapy management in oncology", "authors": "Prakash GH, Kumar DS, Pk K, Arun V, Yadav D, Gopi A", "journal": "Journal of Oncology Pharmacy Practice", "year": "2025", "doi": "10.1177/10781552251345433", "cat": "oncology" },
+    { "title": "Personalised Oncology Care: A Case Study on Using an AI-Based App for Chemotherapy Management and Lifestyle Management", "authors": "Gunisetty HP, Doddaiah SK, Krishnamurthy KP, Arun V, Yadav D, Gopi A", "journal": "Asian Pacific Journal of Cancer Care", "year": "2025", "vol": "10(2):649-651", "doi": "10.31557/apjcc.2025.10.2.649-651", "cat": "oncology" },
+    { "title": "A comprehensive tool for evaluating patient satisfaction in mHealth: development and validation of the Digital Health Application Satisfaction Scale", "authors": "Prakash GH, Kumar DS, Kiran PK, Arun V, Yadav D, Gopi A, Kulkarni P, Rakesh M", "journal": "Measurement and Evaluation in Cancer Care", "year": "2025", "doi": "10.1016/j.ymecc.2025.100017", "cat": "oncology" },
+    { "title": "Development and validation of the Chemotherapy Adherence Assessment Scale (CAAS)", "authors": "Prakash GH, Kumar DS, PK K, Arun V, Yadav D", "journal": "Journal of Oncology Pharmacy Practice", "year": "2024", "doi": "10.1177/10781552241291225", "cat": "oncology" },
+    { "title": "CN15 Mobile application-based intervention study in improving treatment adherence and quality of life in cancer patients", "authors": "Prakash GH, Kumar DS, Pk K, Arun V, Yadav D", "journal": "Annals of Oncology", "year": "2024", "vol": "35:S1172", "doi": "10.1016/j.annonc.2024.08.401", "cat": "oncology" },
+    { "title": "Enhancing Nutritional Care in Cancer: Development and Face Validation of the Chemotherapy Dietary Adherence Scale", "authors": "Prakash GH, Kumar DS, PK K, Arun V, Yadav D, M S", "journal": "Asian Pacific Journal of Cancer Care", "year": "2024", "vol": "9(3):501-504", "doi": "10.31557/apjcc.2024.9.3.501-504", "cat": "oncology" },
+    { "title": "Exploring Multiple Primary Malignancies: An Institutional Experience with Dual Malignancy Cases", "authors": "PK K, Prakash GH, KR S, Naik R", "journal": "Asian Pacific Journal of Cancer Care", "year": "2024", "vol": "9(4):699-704", "doi": "10.31557/apjcc.2024.9.4.699-704", "cat": "oncology" },
+    { "title": "Uncommon Presentation of Multiple Myeloma: Pleural Effusion and Extensive Extramedullary Involvement", "authors": "PK K, Prakash GH, KR S, Kumar DS", "journal": "International Journal of Hematology Oncology and Stem Cell Research", "year": "2024", "vol": "18(4):408-411", "doi": "", "cat": "oncology" },
+    { "title": "Exploring Malnutrition Risk in Cancer Chemotherapy Patients: An Assessment of Associated Factors in a Tertiary Care Cancer Center", "authors": "Prakash GH, D SK, Pk K, Arun V, Yadav D, Gopi A", "journal": "Asian Pacific Journal of Cancer Care", "year": "2024", "vol": "9(1):93-96", "doi": "", "cat": "oncology" },
+    { "title": "Assessment of Cancer Chemotherapy Needs in Patients Attending Tertiary Care Cancer Center: A Cross-Sectional Study", "authors": "Hari Prakash G, Kumar D, Kiran PK, Arun V, Yadav D", "journal": "Indian Journal of Medical and Paediatric Oncology", "year": "2024", "doi": "10.1055/s-0044-1787149", "cat": "oncology" },
+    { "title": "Development and validation of comprehensive needs assessment tool to assess burden of cancer chemotherapy patients attending a tertiary care hospital", "authors": "Prakash GH, Kumar DS, Kiran PK, Arun V, Yadav D, Gopi A, et al", "journal": "Journal of Cancer Research and Therapeutics", "year": "2022", "doi": "", "cat": "oncology" },
+
+    { "title": "Investigating the perception and knowledge of medical students on the role of metaverse in healthcare", "authors": "Kumar DS, Prakash GH, Yadav D, Gopi A", "journal": "Indian Journal of Natural Sciences", "year": "2025", "vol": "15(88)", "doi": "", "cat": "digital" },
+    { "title": "Development and validation of android mobile application in the management of mental health", "authors": "Prakash GH, Kumar DS, Arun V, Yadav D, Gopi A, Garg R", "journal": "Clinical Epidemiology and Global Health", "year": "2025", "vol": "31:101894", "doi": "10.1016/j.cegh.2024.101894", "cat": "digital" },
+    { "title": "Micro-costing analysis of a digital mental health intervention for adolescents in South India: the AikyaMind mHealth application", "authors": "Gunisetty HP, Doddaiah SK, Arun V, Yadav D, Singh P, Gopi A, Kulkarni P, Garg R", "journal": "International Journal of Community Medicine and Public Health", "year": "2025", "doi": "", "cat": "digital" },
+    { "title": "Development of the Strategic Plan for the Digital Health Lab and in the Healthcare System", "authors": "Kumar S, Prakash GH", "journal": "International Journal of Scientific Research", "year": "2023", "vol": "12(1):1-5", "doi": "", "cat": "digital" },
+
+    { "title": "Prevalence, risk factors and quality of life in gestational diabetes mellitus: a scoping review", "authors": "Pandey P, Prakash GH, Darukaradhya TB", "journal": "International Journal of Community Medicine and Public Health", "year": "2026", "vol": "13(7):3975-3982", "doi": "10.18203/2394-6040.ijcmph20262306", "cat": "ncd" },
+    { "title": "Birth preparedness and complication readiness among antenatal women: a scoping review of levels and associated factors", "authors": "Basavaraju S, Prakash GH, Darukaradhya TB", "journal": "International Journal of Community Medicine and Public Health", "year": "2026", "vol": "13(7):4043-4050", "doi": "10.18203/2394-6040.ijcmph20262315", "cat": "ncd" },
+    { "title": "Development and validation of a questionnaire to assess hypertension risk factors in Urban Mysuru", "authors": "Rakesh M, Kumar Sunil, Kavya S, Prakash G Hari", "journal": "Journal of Integrative Nursing", "year": "2025", "vol": "7(2):78-82", "doi": "10.4103/jin.jin_146_24", "cat": "ncd" },
+    { "title": "Web-based intervention improving quality of life among patients with type 2 diabetes in southern Karnataka, India", "authors": "Anil D, Kumar DS, Shivaswamy RP, Gopi A, Prakash GH, Yadav D", "journal": "International Journal of Noncommunicable Diseases", "year": "2024", "vol": "9(4):160-165", "doi": "10.4103/jncd.jncd_75_24", "cat": "ncd" },
+    { "title": "Prevalence and correlates of depression, anxiety, and stress among adolescents in urban and rural areas of Mysuru, South India", "authors": "Prakash GH, Kumar DS, Arun V, Hegde S, Yadav D, Gopi A", "journal": "Journal of Family Medicine and Primary Care", "year": "2024", "vol": "13(8):2979-2985", "doi": "10.4103/jfmpc.jfmpc_1600_23", "cat": "ncd" },
+    { "title": "Diabetes care: an online web-based tool for improving the health outcomes of type 2 diabetes mellitus patients: a longitudinal study", "authors": "Anil D, Kumar DS, Prasad SR, Gopi A, Prakash H, Yadav D, Murthy MRN", "journal": "International Journal of Preventive Medicine", "year": "2024", "vol": "15:48", "doi": "10.4103/ijpvm.ijpvm_121_23", "cat": "ncd" },
+    { "title": "Web-based intervention in improving the mental health status among patients with type 2 diabetes in southern India", "authors": "Anil D, Kumar DS, Shivaswamy RP, Arun V, Gopi A, Yadav D, Prakash H, Murthy MRN", "journal": "Archives of Mental Health", "year": "2023", "doi": "10.4103/amh.amh_89_23", "cat": "ncd" },
+    { "title": "Body image perception and body image satisfaction among female medical students of Mysuru", "authors": "Rakesh M, Kumar DS, Mythily MR, Ravali A, Hari PG", "journal": "International Journal of Community Medicine and Public Health", "year": "2023", "vol": "10:1877-1881", "doi": "", "cat": "ncd" },
+    { "title": "Assessment of Gaps between Standard Diabetes Treatment Protocols Available in India and National List of Essential Medicines and WHO Essential Medicines – A Brief Report", "authors": "Prakash GH, Yadav D, Kumar DS", "journal": "International Journal of Pharmacy and Pharmaceutical Research", "year": "2022", "vol": "23(4):420-427", "doi": "", "cat": "ncd" },
+    { "title": "Occupational injuries: Prevalence, Patterns and Associated factors among Agriculture Workers in a developing country", "authors": "Shabadi N, Anil D, Kumar DS, Hegde S, Nagendra L, Kruthika BN, Vanmathi A, Hari Prakash", "journal": "Global Journal of Medicine and Public Health", "year": "2022", "vol": "11(6)", "doi": "", "cat": "ncd" },
+    { "title": "Assessment of Adverse Drug Reactions (ADRs) Due to Self-Medication, Mysuru, South India – A Cross-Sectional Study", "authors": "Prakash H, Yadav D, A A, V D", "journal": "IJPPR.Human", "year": "2021", "doi": "", "cat": "ncd" },
+    { "title": "Knowledge and Attitude Regarding Self Medication among the People Residing in the Urban Field Practice Area of a Medical College, Mysuru, Karnataka", "authors": "Hari Prakash G, Deepika Yadav", "journal": "International Journal of Science and Research", "year": "2021", "vol": "10(10):786-790", "doi": "", "cat": "ncd" },
+    { "title": "Assessment of Self-Medication Practices Among the People Residing in the Urban Field Practice Area of A Medical College, Mysuru – A Cross-Sectional Study", "authors": "Prakash H, Smitha, Prakash B, Yadav D, Narayana Murthy MR", "journal": "IJPPR.Human", "year": "2021", "vol": "22(2):659-669", "doi": "", "cat": "ncd" },
+
+    { "title": "Development and Validation of the Needs Assessment Scale for Innovative Technology Approaches to Dental Screening", "authors": "Yadav D, Kumar DS, Mallikarjunaswamy MS, Arun V, Prakash GH, Sunita S", "journal": "Journal of Indian Association of Public Health Dentistry", "year": "2024", "vol": "22(4):348-354", "doi": "10.4103/jiaphd.jiaphd_263_23", "cat": "dental" },
+    { "title": "Oral hygiene Knowledge, Attitude, and Practices of caregivers of preschool children attending Anganwadi centres in Mysuru Urban, Karnataka", "authors": "Yadav D, Prakash H, Murthy MRN, Shree A, Kumar DS", "journal": "International Journal of Dental Science and Innovative Research", "year": "2022", "vol": "5(3):316-321", "doi": "", "cat": "dental" },
+    { "title": "Prevalence of Early Childhood Caries in Preschool Children Attending Anganwadis in Mysuru Urban, Karnataka", "authors": "Yadav D, Narayanamurthy M, Gowda A, Prakash H", "journal": "International Journal Dental and Medical Sciences Research", "year": "2021", "vol": "3(5):597-604", "doi": "", "cat": "dental" },
+
+    { "title": "Dynamic CBME in action: rule-based digital case-based learning to evaluate antibiotic-stewardship reasoning in MBBS learners", "authors": "Kumar SD, Dandekar S, Prakash GH", "journal": "BMC Medical Education", "year": "2026", "doi": "10.1186/s12909-026-09810-7", "cat": "mededu" }
+  ],
+  "conferences": [
+    { "type": "oral", "title": "User-centred design and clinical validation of a comprehensive mHealth platform for enhanced chemotherapy management", "event": "ESMO Annual Meeting 2025 · Abstract 849P", "award": "" },
+    { "type": "poster", "title": "Digital patient-reported outcomes in cancer care: Quality of life and symptom trajectories using a mobile health platform", "event": "ESMO Asia 2024 · Abstract 422P", "award": "ESMO Travel Grant Awardee" },
+    { "type": "poster", "title": "Mobile application-based intervention in improving treatment adherence and QoL in cancer patients", "event": "ESMO Asia 2024 · Ann Oncol. 2024;35:S1172", "award": "" },
+    { "type": "oral", "title": "Medical Technology-Based Smartphone Application in Cancer Management", "event": "World Cancer Congress, New Delhi · March 2024", "award": "" },
+    { "type": "oral", "title": "Development and Validation of a Mobile App to Promote TB Medication Adherence", "event": "TB Conclave · November 2023", "award": "" },
+    { "type": "prototype", "title": "Wearable Device for Detecting Muscle Wasting and Fatigue in Cancer Rehabilitation", "event": "MEDHA Medical Device Hackathon, IIT Bombay · June 2023", "award": "" },
+    { "type": "paper", "title": "Development and Validation of a Smart Wearable Device for Detection of Muscle Wasting and Fatigue", "event": "My Nutricon Conference · December 2022", "award": "Best Paper Award" }
+  ],
+  "teaching": {
+    "courses": ["Research Methodology", "Biostatistics", "Ethics in Public Health", "Technology in Public Health", "Epidemiology of NCDs & Nutrition", "Qualitative Research Methods"],
+    "thesisSupervision": "Active supervisor and collaborator on postgraduate theses across public health, surgical, and clinical disciplines. Provides statistical analysis and academic writing support to students throughout the research lifecycle.",
+    "resourcePerson": "Invited faculty for workshops on thesis writing, AI-assisted literature review, questionnaire development and validation, and research dissemination.",
+    "certifications": [
+      "Good Clinical Practices (ICH-GCP)",
+      "Basic Course in Biomedical Research",
+      "SPSS Statistical Analysis Workshop",
+      "HTA Online Course Development (PGIMER)"
+    ]
+  }
+}
