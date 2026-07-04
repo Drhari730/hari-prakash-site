@@ -14,6 +14,17 @@ function md(s) {
   return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
 }
 
+// Author-name variants used across his publications (ordered longest/most-specific first
+// so e.g. "Hari Prakash G" matches as one unit rather than leaving the "G" unbolded).
+const OWN_NAME_VARIANTS = [
+  'Prakash G Hari', 'Hari Prakash G', 'G Hari Prakash', 'Gunisetty HP',
+  'Prakash GH', 'Hari PG', 'Hari Prakash', 'Prakash H'
+];
+const OWN_NAME_RE = new RegExp(`\\b(${OWN_NAME_VARIANTS.map(v => v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})\\b`, 'g');
+function highlightAuthors(s) {
+  return esc(s).replace(OWN_NAME_RE, '<strong>$1</strong>');
+}
+
 function renderHero() {
   const p = DATA.profile;
   document.getElementById('heroEyebrow').textContent = p.eyebrow;
@@ -128,7 +139,7 @@ function renderPublications() {
       <div class="pub-num">${i + 1}.</div>
       <div>
         <div class="pub-title">${esc(p.title)}</div>
-        <div class="pub-authors">${esc(p.authors)}</div>
+        <div class="pub-authors">${highlightAuthors(p.authors)}</div>
         <div class="pub-journal">${esc(p.journal)}</div>
         <div class="pub-meta">
           <span class="pub-year">${esc(p.year)}</span>

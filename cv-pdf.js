@@ -8,8 +8,31 @@ const CAT_LABELS = {
   mededu: 'Medical Education'
 };
 
-function citation(p, n) {
-  let s = `${n}. ${p.authors}. ${p.title}. ${p.journal}. ${p.year}`;
+// Author-name variants used across his publications (ordered longest/most-specific first
+// so e.g. "Hari Prakash G" matches as one unit rather than leaving the "G" unbolded).
+const OWN_NAME_VARIANTS = [
+  'Prakash G Hari', 'Hari Prakash G', 'G Hari Prakash', 'Gunisetty HP',
+  'Prakash GH', 'Hari PG', 'Hari Prakash', 'Prakash H'
+];
+const OWN_NAME_RE = new RegExp(`(${OWN_NAME_VARIANTS.map(v => v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+
+// Splits a string into { text, bold } segments, marking his own name variants as bold.
+function splitOwnName(str) {
+  const segments = [];
+  let lastIndex = 0;
+  let match;
+  OWN_NAME_RE.lastIndex = 0;
+  while ((match = OWN_NAME_RE.exec(str))) {
+    if (match.index > lastIndex) segments.push({ text: str.slice(lastIndex, match.index), bold: false });
+    segments.push({ text: match[0], bold: true });
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < str.length) segments.push({ text: str.slice(lastIndex), bold: false });
+  return segments;
+}
+
+function citationTail(p) {
+  let s = `. ${p.title}. ${p.journal}. ${p.year}`;
   if (p.vol) s += `;${p.vol}`;
   s += '.';
   if (p.doi) s += ` doi:${p.doi}`;
@@ -22,7 +45,7 @@ function generateCvPdf(content, res) {
 
   const { profile, about, education, positions, grants, patent, inventions, publications, conferences, teaching, affiliations } = content;
 
-  const ruleColor = '#7a2e2e';
+  const ruleColor = '#0f2340';
   const textColor = '#1c1c1c';
   const mutedColor = '#5a5a5a';
 
@@ -108,7 +131,11 @@ function generateCvPdf(content, res) {
     doc.font('Times-Bold').fontSize(10).fillColor(ruleColor).text(CAT_LABELS[cat]);
     doc.fillColor(textColor).font('Times-Roman').fontSize(9);
     byCat[cat].forEach(p => {
-      doc.text(citation(p, n), { align: 'justify' });
+      doc.font('Times-Roman').text(`${n}. `, { continued: true });
+      splitOwnName(p.authors).forEach(seg => {
+        doc.font(seg.bold ? 'Times-Bold' : 'Times-Roman').text(seg.text, { continued: true });
+      });
+      doc.font('Times-Roman').text(citationTail(p), { continued: false });
       doc.moveDown(0.15);
       n += 1;
     });
