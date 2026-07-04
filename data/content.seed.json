@@ -50,7 +50,7 @@
   ],
   "positions": [
     {
-      "years": "2024 – Present",
+      "years": "August 2025 – Present",
       "role": "Assistant Professor",
       "org": "Division of Public Health, MS Ramaiah University of Applied Sciences (MSRUAS), Bengaluru",
       "bullets": ["Teaching MPH programme: Research Methodology, Biostatistics, Ethics in Public Health, Technology in Public Health, NCDs & Nutrition, Qualitative Methods"]
@@ -59,11 +59,11 @@
       "years": "Nov 2024 – Jul 2025",
       "role": "Scientist-D / Senior Research Officer",
       "org": "Department of Community Medicine & School of Public Health, PGIMER, Chandigarh",
-      "bullets": ["Developed Health Technology Assessment (HTA) online course for ICMR", "Conducted research on digital health interventions and AI for primordial prevention and disease screening"]
+      "bullets": ["Conducted research on digital health interventions and AI for primordial prevention and disease screening"]
     },
     {
       "years": "Feb 2022 – Apr 2022",
-      "role": "Field Investigator (Consultant) — World Health Organization",
+      "role": "Field Investigator — World Health Organization",
       "org": "JSS Medical College, Mysuru",
       "bullets": ["Coordinated multi-centre study on oxygen requirements and respiratory support in COVID-19 patients in LMICs"]
     },
@@ -97,13 +97,13 @@
     { "icon": "⌚", "name": "Smart Wearable for Muscle Health", "desc": "Wearable prototype for detecting early signs of muscle wasting and fatigue in cancer care and rehabilitation.", "status": "prototype", "badge": "IIT Bombay MEDHA 2023", "link": "" }
   ],
   "ncdSuite": [
-    { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app — glucose logging, medication reminders, diet guidance.", "status": "development", "link": "https://github.com/Drhari730/Glydecare" },
+    { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app — glucose logging, medication reminders, diet guidance.", "status": "development", "link": "" },
     { "condition": "Hypertension", "icon": "❤️", "name": "BP-Mitra", "desc": "Hypertension risk prediction and blood-pressure tracking app for personalised prevention.", "status": "live", "link": "https://github.com/Drhari730/BP-Mitra" },
     { "condition": "Anemia", "icon": "🩹", "name": "Anemia Care (planned)", "desc": "Screening and nutrition-support app for anemia management — in early planning.", "status": "planned", "link": "" },
     { "condition": "Asthma", "icon": "🌬️", "name": "Asthma-Care", "desc": "Asthma management system — symptom tracking and trigger monitoring.", "status": "development", "link": "" },
     { "condition": "COPD", "icon": "🫁", "name": "COPD Companion (planned)", "desc": "Respiratory symptom and exacerbation-risk tracker for COPD patients — in early planning.", "status": "planned", "link": "" },
     { "condition": "Cancer", "icon": "🎗️", "name": "Onco-Care / Onco-diet", "desc": "Chemotherapy management platform (Onco-Care, live) plus a companion diet-recommendation app for oncology patients (Onco-diet, in development).", "status": "live", "link": "https://onco-care.in/" },
-    { "condition": "TB", "icon": "🫧", "name": "TB-Mitra", "desc": "Tuberculosis medication adherence and patient support app.", "status": "development", "link": "https://github.com/Drhari730/TB-Mitra" }
+    { "condition": "TB", "icon": "🫧", "name": "TB-Mitra", "desc": "Tuberculosis medication adherence and patient support app.", "status": "development", "link": "" }
   ],
   "publications": [
     { "title": "Cervical cancer and human papillomavirus (HPV) vaccination awareness among university students: A global scoping review of knowledge, attitudes, and barriers", "authors": "Shwetha CV, Prakash GH, Darukaradhya TB", "journal": "Journal of Oncology Pharmacy Practice", "year": "2026", "doi": "10.1177/10781552261446556", "cat": "oncology" },
@@ -170,8 +170,7 @@
     "certifications": [
       "Good Clinical Practices (ICH-GCP)",
       "Basic Course in Biomedical Research",
-      "SPSS Statistical Analysis Workshop",
-      "HTA Online Course Development (PGIMER)"
+      "SPSS Statistical Analysis Workshop"
     ]
   }
 }
