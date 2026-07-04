@@ -40,8 +40,10 @@ function renderHero() {
     { ico: '☎', label: p.phone, href: 'tel:' + p.phone.replace(/\s+/g, '') },
     { ico: '⊙', label: 'ORCID: ' + p.orcid, href: p.orcid ? `https://orcid.org/${p.orcid}` : '#' }
   ];
+  if (p.scholarUrl) contactLinks.push({ ico: '↗', label: 'Google Scholar', href: p.scholarUrl });
+  if (p.scopusUrl) contactLinks.push({ ico: '↗', label: 'Scopus Profile', href: p.scopusUrl });
   document.getElementById('heroContact').innerHTML = contactLinks.map(c =>
-    `<a href="${esc(c.href)}"><span class="ico">${c.ico}</span> ${esc(c.label)}</a>`
+    `<a href="${esc(c.href)}" target="_blank" rel="noopener"><span class="ico">${c.ico}</span> ${esc(c.label)}</a>`
   ).join('');
 }
 
