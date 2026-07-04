@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2340" />
+      <stop offset="100%" stop-color="#183963" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#559999" />
+      <stop offset="100%" stop-color="#80d4d4" />
+    </linearGradient>
+  </defs>
+  <!-- Background with rounded corners -->
+  <rect width="120" height="120" rx="28" fill="url(#bgGrad)" />
+  
+  <!-- Digital Pulse Line -->
+  <path d="M 25 60 L 45 60 L 55 35 L 70 85 L 80 60 L 95 60" fill="none" stroke="url(#accentGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Accent Dot (Gold) -->
+  <circle cx="95" cy="30" r="7" fill="#d3b87a" />
+</svg>

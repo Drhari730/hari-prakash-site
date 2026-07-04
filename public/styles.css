@@ -42,8 +42,17 @@ nav {
   color: var(--navy);
   white-space: nowrap;
   margin-right: auto;
+  display: flex;
+  align-items: center;
 }
 .nav-brand span { color: var(--teal); }
+.nav-logo {
+  height: 28px;
+  width: 28px;
+  margin-right: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
 .nav-links { display: flex; gap: 26px; list-style: none; }
 .nav-links a {
   font-size: .82rem;
