@@ -63,8 +63,27 @@ function renderAbout() {
     </li>
   `).join('');
   document.getElementById('affiliationsList').innerHTML = DATA.affiliations.map(a =>
-    `<li style="font-size:.8rem;color:var(--muted);padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--maroon);font-weight:700;">·</span>${esc(a)}</li>`
+    `<li style="font-size:.8rem;color:var(--muted);padding-left:12px;position:relative;"><span style="position:absolute;left:0;color:var(--teal);font-weight:700;">·</span>${esc(a)}</li>`
   ).join('');
+  renderHighlights();
+}
+
+function renderHighlights() {
+  const el = document.getElementById('highlightsRow');
+  if (!el) return;
+  const editorialCount = (DATA.affiliations || []).filter(a => /editor/i.test(a)).length;
+  const items = [
+    { num: DATA.publications.length, label: 'Peer-reviewed publications' },
+    { num: DATA.inventions.length, label: 'Digital health tools built' },
+    { num: DATA.patent && DATA.patent.text ? 1 : 0, label: 'Published patent' },
+    { num: editorialCount, label: 'Journal editorial roles' }
+  ];
+  el.innerHTML = items.map(i => `
+    <div class="highlight-item">
+      <div class="highlight-num">${i.num}</div>
+      <div class="highlight-label">${esc(i.label)}</div>
+    </div>
+  `).join('');
 }
 
 function renderPositions() {

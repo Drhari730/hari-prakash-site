@@ -7,44 +7,76 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --navy: #0f2340; --navy2: #1a3357; --teal: #1a6b6b; --teal-mid: #2a8a8a;
+    --teal-light: #e8f4f4; --accent: #c47c3e; --bg: #f7f8fa; --rule: #e2e8f0; --muted: #5a6372;
+  }
   * { box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: #faf6ee; color: #2b2320; margin: 0; padding: 0; }
-  header { background: #591f1f; color: #fdf8ee; padding: 18px 5vw; display: flex; align-items: center; justify-content: space-between; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: #1c1c1e; margin: 0; padding: 0; }
+  header { background: var(--navy); color: #fff; padding: 18px 5vw; display: flex; align-items: center; justify-content: space-between; }
   header h1 { font-family: 'Lora', serif; font-size: 1.2rem; margin: 0; }
-  header a, header button { color: #fdf8ee; background: transparent; border: 1px solid rgba(255,255,255,.3); padding: 7px 14px; border-radius: 6px; font-size: .82rem; cursor: pointer; text-decoration: none; }
-  main { max-width: 900px; margin: 0 auto; padding: 40px 5vw; }
+  header h1 span { color: var(--teal-mid); }
+  header a, header button { color: #fff; background: transparent; border: 1px solid rgba(255,255,255,.3); padding: 7px 14px; border-radius: 6px; font-size: .82rem; cursor: pointer; text-decoration: none; }
+  header a:hover, header button:hover { background: rgba(255,255,255,.1); }
+  main { max-width: 920px; margin: 0 auto; padding: 40px 5vw; }
 
-  #loginView { max-width: 380px; margin: 80px auto; background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 8px 30px rgba(0,0,0,.08); }
-  #loginView h2 { font-family: 'Lora', serif; margin-bottom: 20px; color: #591f1f; }
-  #loginView label { display: block; font-size: .82rem; margin-bottom: 6px; color: #6f6255; }
-  #loginView input { width: 100%; padding: 10px 12px; margin-bottom: 16px; border: 1px solid #e6dcc8; border-radius: 6px; font-size: .9rem; }
-  #loginView button { width: 100%; padding: 11px; background: #7a2e2e; color: #fff; border: none; border-radius: 6px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+  #loginView { max-width: 380px; margin: 80px auto; background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 8px 30px rgba(0,0,0,.08); border-top: 4px solid var(--teal); }
+  #loginView h2 { font-family: 'Lora', serif; margin-bottom: 20px; color: var(--navy); }
+  #loginView label { display: block; font-size: .82rem; margin-bottom: 6px; color: var(--muted); }
+  #loginView input { width: 100%; padding: 10px 12px; margin-bottom: 16px; border: 1px solid var(--rule); border-radius: 6px; font-size: .9rem; }
+  #loginView input:focus { outline: none; border-color: var(--teal); }
+  #loginView button { width: 100%; padding: 11px; background: var(--navy); color: #fff; border: none; border-radius: 6px; font-size: .9rem; font-weight: 600; cursor: pointer; }
+  #loginView button:hover { background: var(--teal); }
   #loginError { color: #b91c1c; font-size: .82rem; margin-top: 10px; min-height: 1.2em; }
 
-  .section-block { background: #fff; border: 1px solid #e6dcc8; border-radius: 10px; padding: 24px; margin-bottom: 24px; }
-  .section-block h3 { font-family: 'Lora', serif; color: #591f1f; margin: 0 0 4px; }
-  .section-block .hint { font-size: .78rem; color: #6f6255; margin-bottom: 16px; }
-  .item-card { border: 1px solid #eee0c8; border-radius: 8px; padding: 14px; margin-bottom: 12px; background: #faf6ee; position: relative; }
-  .item-card label { display: block; font-size: .72rem; color: #6f6255; margin: 8px 0 3px; text-transform: uppercase; letter-spacing: .04em; }
-  .item-card input, .item-card textarea, .item-card select { width: 100%; padding: 7px 9px; border: 1px solid #e6dcc8; border-radius: 5px; font-size: .85rem; font-family: inherit; }
+  .section-block { background: #fff; border: 1px solid var(--rule); border-radius: 10px; padding: 24px; margin-bottom: 24px; }
+  .section-block h3 { font-family: 'Lora', serif; color: var(--navy); margin: 0 0 4px; }
+  .section-block .hint { font-size: .78rem; color: var(--muted); margin-bottom: 16px; }
+  .item-card { border: 1px solid var(--rule); border-radius: 8px; padding: 14px; margin-bottom: 12px; background: var(--bg); position: relative; }
+  .item-card label { display: block; font-size: .72rem; color: var(--muted); margin: 8px 0 3px; text-transform: uppercase; letter-spacing: .04em; }
+  .item-card input, .item-card textarea, .item-card select { width: 100%; padding: 7px 9px; border: 1px solid var(--rule); border-radius: 5px; font-size: .85rem; font-family: inherit; }
+  .item-card input:focus, .item-card textarea:focus, .item-card select:focus { outline: none; border-color: var(--teal); }
   .item-card textarea { min-height: 50px; resize: vertical; }
-  .del-btn { position: absolute; top: 10px; right: 10px; background: #f4e4e0; color: #7a2e2e; border: none; border-radius: 5px; width: 24px; height: 24px; cursor: pointer; font-size: .8rem; }
-  .btn-row { display: flex; gap: 10px; margin-top: 10px; }
-  .add-btn { background: #f4e4e0; color: #7a2e2e; border: 1px dashed #b6893c; padding: 8px 16px; border-radius: 6px; font-size: .82rem; cursor: pointer; }
-  .save-btn { background: #7a2e2e; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: .82rem; cursor: pointer; font-weight: 600; }
-  .save-msg { font-size: .8rem; color: #3f5d43; margin-left: 10px; }
+  .del-btn { position: absolute; top: 10px; right: 10px; background: #fde8e8; color: #b91c1c; border: none; border-radius: 5px; width: 24px; height: 24px; cursor: pointer; font-size: .8rem; }
+  .btn-row { display: flex; gap: 10px; margin-top: 10px; align-items: center; }
+  .add-btn { background: var(--teal-light); color: var(--teal); border: 1px dashed var(--teal-mid); padding: 8px 16px; border-radius: 6px; font-size: .82rem; cursor: pointer; }
+  .save-btn { background: var(--navy); color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: .82rem; cursor: pointer; font-weight: 600; }
+  .save-btn:hover { background: var(--teal); }
+  .save-msg { font-size: .8rem; color: var(--teal); margin-left: 10px; font-weight: 600; }
   .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-  .tab-btn { background: #f2e9d8; border: 1px solid #e6dcc8; padding: 8px 16px; border-radius: 20px; font-size: .82rem; cursor: pointer; }
-  .tab-btn.active { background: #7a2e2e; color: #fff; border-color: #7a2e2e; }
+  .tab-btn { background: #fff; border: 1px solid var(--rule); color: var(--muted); padding: 8px 16px; border-radius: 20px; font-size: .82rem; cursor: pointer; }
+  .tab-btn:hover { border-color: var(--teal); color: var(--teal); }
+  .tab-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
+
+  /* DOI auto-fetch box */
+  .doi-box { background: var(--teal-light); border: 1px solid #c0dede; border-radius: 8px; padding: 16px; margin-bottom: 18px; }
+  .doi-box h4 { margin: 0 0 4px; color: var(--navy); font-size: .95rem; }
+  .doi-box p { margin: 0 0 12px; font-size: .78rem; color: var(--muted); }
+  .doi-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .doi-row input { flex: 1; min-width: 220px; padding: 9px 11px; border: 1px solid var(--rule); border-radius: 6px; font-size: .85rem; }
+  .doi-row input:focus { outline: none; border-color: var(--teal); }
+  .doi-row select { padding: 9px; border: 1px solid var(--rule); border-radius: 6px; font-size: .82rem; }
+  .doi-fetch-btn { background: var(--teal); color: #fff; border: none; padding: 9px 18px; border-radius: 6px; font-size: .85rem; font-weight: 600; cursor: pointer; }
+  .doi-fetch-btn:hover { background: var(--teal-mid); }
+  .doi-fetch-btn:disabled { opacity: .6; cursor: wait; }
+  .doi-preview { margin-top: 12px; background: #fff; border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; font-size: .84rem; line-height: 1.5; color: #1c1c1e; display: none; }
+  .doi-preview.show { display: block; }
+  .doi-preview .cite-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: var(--teal); font-weight: 700; margin-bottom: 4px; }
+  .doi-preview strong { color: var(--navy); }
+  .doi-msg { font-size: .8rem; margin-top: 8px; min-height: 1em; }
+  .doi-msg.err { color: #b91c1c; }
+  .doi-add-btn { background: var(--accent); color: #fff; border: none; padding: 8px 16px; border-radius: 6px; font-size: .82rem; font-weight: 600; cursor: pointer; margin-top: 10px; display: none; }
+  .doi-add-btn.show { display: inline-block; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Site Admin — Dr G. Hari Prakash</h1>
+  <h1>Dr G. <span>Hari Prakash</span> — Site Admin</h1>
   <div id="headerActions" style="display:flex; gap:10px;">
+    <a href="/cv.pdf" target="_blank">Preview CV</a>
     <a href="/" target="_blank">View site</a>
     <button id="logoutBtn" style="display:none">Log out</button>
   </div>

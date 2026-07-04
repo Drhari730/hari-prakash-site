@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const store = require('./lib/store');
 const auth = require('./lib/auth');
 const { generateCvPdf } = require('./cv-pdf');
+const { buildFromCrossref } = require('./lib/citation');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -62,6 +63,35 @@ app.put('/api/admin/content/:section', auth.requireAdmin, (req, res) => {
     res.json(updated[req.params.section]);
   } catch (err) {
     res.status(400).json({ error: err.message });
+  }
+});
+
+// Look up a publication by DOI (or free-text) via the free CrossRef API and return
+// auto-filled structured fields + Vancouver/APA/Harvard formatted citations.
+const DOI_RE = /10\.\d{4,9}\/[^\s"'<>]+/i;
+app.get('/api/admin/lookup', auth.requireAdmin, async (req, res) => {
+  const raw = (req.query.q || '').trim();
+  if (!raw) return res.status(400).json({ error: 'Provide a DOI or title.' });
+  try {
+    const mailto = process.env.ADMIN_EMAIL || 'admin@example.com';
+    const headers = { 'User-Agent': `HariPrakashSite/1.0 (mailto:${mailto})` };
+    const doiMatch = raw.match(DOI_RE);
+    let message;
+    if (doiMatch) {
+      const doi = doiMatch[0].replace(/[).,;]+$/, '');
+      const r = await fetch(`https://api.crossref.org/works/${encodeURIComponent(doi)}`, { headers });
+      if (!r.ok) return res.status(404).json({ error: 'DOI not found on CrossRef.' });
+      message = (await r.json()).message;
+    } else {
+      const r = await fetch(`https://api.crossref.org/works?query.bibliographic=${encodeURIComponent(raw)}&rows=1`, { headers });
+      if (!r.ok) return res.status(404).json({ error: 'No match found.' });
+      const items = ((await r.json()).message || {}).items || [];
+      if (!items.length) return res.status(404).json({ error: 'No match found for that query.' });
+      message = items[0];
+    }
+    res.json(buildFromCrossref(message));
+  } catch (err) {
+    res.status(502).json({ error: 'Lookup service unavailable. Check your connection and try again.' });
   }
 });
 

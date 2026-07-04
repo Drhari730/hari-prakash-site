@@ -98,6 +98,25 @@ function esc(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
+const DOI_BOX_HTML = `
+  <div class="doi-box">
+    <h4>⚡ Auto-add a publication from a DOI</h4>
+    <p>Paste a DOI (e.g. <code>10.1186/s12909-026-09810-7</code>), a DOI link, or the article title — the details are fetched automatically so you don't type authors, journal, year etc. by hand.</p>
+    <div class="doi-row">
+      <input type="text" class="doi-input" placeholder="Paste DOI, DOI link, or article title">
+      <select class="doi-style" title="Citation style to preview">
+        <option value="vancouver">Vancouver</option>
+        <option value="apa">APA</option>
+        <option value="harvard">Harvard</option>
+      </select>
+      <button class="doi-fetch-btn" data-action="doi-fetch">Fetch</button>
+    </div>
+    <div class="doi-msg"></div>
+    <div class="doi-preview"></div>
+    <button class="doi-add-btn" data-action="doi-add">+ Add this publication to the list</button>
+  </div>
+`;
+
 function renderListSection(section) {
   const cfg = SECTION_CONFIGS[section];
   const items = CONTENT[section];
@@ -105,6 +124,7 @@ function renderListSection(section) {
     <div class="section-block" data-section="${section}">
       <h3>${cfg.label}</h3>
       <div class="hint">${items.length} item(s). Edit fields below, add new entries, or delete. Click "Save section" when done.</div>
+      ${section === 'publications' ? DOI_BOX_HTML : ''}
       <div class="items-wrap">
         ${items.map((item, idx) => `
           <div class="item-card" data-idx="${idx}">
@@ -152,8 +172,31 @@ async function saveSection(section, value) {
   return res.json();
 }
 
+let lastDoiResult = null;
+
+function renderDoiPreview(block) {
+  const preview = block.querySelector('.doi-preview');
+  if (!preview || !lastDoiResult) return;
+  const style = block.querySelector('.doi-style').value;
+  const cite = lastDoiResult.citations[style] || '';
+  preview.innerHTML =
+    `<div class="cite-label">${style} format</div>${esc(cite)}` +
+    `<div style="margin-top:8px;font-size:.75rem;color:#5a6372">This will be added as a new entry — set its <strong>category</strong> in the new card below after adding.</div>`;
+  preview.classList.add('show');
+}
+
 function wireListSection(section) {
   const block = document.querySelector(`.section-block[data-section="${section}"]`);
+
+  if (section === 'publications') {
+    const styleSel = block.querySelector('.doi-style');
+    if (styleSel) styleSel.addEventListener('change', () => renderDoiPreview(block));
+    const input = block.querySelector('.doi-input');
+    if (input) input.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter') { ev.preventDefault(); block.querySelector('.doi-fetch-btn').click(); }
+    });
+  }
+
   block.addEventListener('click', async (e) => {
     const action = e.target.dataset.action;
     if (action === 'add') {
@@ -174,6 +217,39 @@ function wireListSection(section) {
       } catch {
         msg.textContent = 'Error saving';
       }
+    } else if (action === 'doi-fetch') {
+      const btn = e.target;
+      const q = block.querySelector('.doi-input').value.trim();
+      const msg = block.querySelector('.doi-msg');
+      const preview = block.querySelector('.doi-preview');
+      const addBtn = block.querySelector('.doi-add-btn');
+      msg.className = 'doi-msg'; msg.textContent = '';
+      preview.classList.remove('show'); addBtn.classList.remove('show'); lastDoiResult = null;
+      if (!q) { msg.className = 'doi-msg err'; msg.textContent = 'Enter a DOI or title first.'; return; }
+      btn.disabled = true; btn.textContent = 'Fetching…';
+      try {
+        const res = await fetch('/api/admin/lookup?q=' + encodeURIComponent(q));
+        const body = await res.json();
+        if (!res.ok) {
+          msg.className = 'doi-msg err'; msg.textContent = body.error || 'Lookup failed.';
+        } else {
+          lastDoiResult = body;
+          renderDoiPreview(block);
+          msg.className = 'doi-msg'; msg.textContent = 'Found — review the preview, then add.';
+          addBtn.classList.add('show');
+        }
+      } catch {
+        msg.className = 'doi-msg err'; msg.textContent = 'Network error. Try again.';
+      } finally {
+        btn.disabled = false; btn.textContent = 'Fetch';
+      }
+    } else if (action === 'doi-add') {
+      if (!lastDoiResult) return;
+      // Preserve any edits already made to existing cards before re-rendering.
+      CONTENT.publications = collectListSection('publications');
+      CONTENT.publications.unshift({ ...SECTION_CONFIGS.publications.blank, ...lastDoiResult.fields });
+      lastDoiResult = null;
+      renderPanel('publications');
     }
   });
 }
