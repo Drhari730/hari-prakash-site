@@ -12,9 +12,14 @@
   <!-- Background with rounded corners -->
   <rect width="120" height="120" rx="28" fill="url(#bgGrad)" />
   
-  <!-- Digital Pulse Line -->
-  <path d="M 25 60 L 45 60 L 55 35 L 70 85 L 80 60 L 95 60" fill="none" stroke="url(#accentGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Digital Smartphone/Tablet outline -->
+  <rect x="35" y="25" width="50" height="70" rx="8" fill="none" stroke="url(#accentGrad)" stroke-width="7" />
   
-  <!-- Accent Dot (Gold) -->
-  <circle cx="95" cy="30" r="7" fill="#d3b87a" />
+  <!-- Medical Cross inside the screen -->
+  <path d="M 53 45 L 67 45 M 60 38 L 60 52" stroke="#d3b87a" stroke-width="7" stroke-linecap="round" />
+  
+  <!-- Data / Network Nodes at bottom of screen -->
+  <circle cx="48" cy="74" r="5" fill="url(#accentGrad)" />
+  <circle cx="72" cy="74" r="5" fill="url(#accentGrad)" />
+  <path d="M 48 74 L 72 74" stroke="url(#accentGrad)" stroke-width="4" />
 </svg>

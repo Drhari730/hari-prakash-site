@@ -431,7 +431,7 @@ footer a:hover { color: rgba(255,255,255,.7); }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-card { display: none; }
+  .hero-card { margin-top: 16px; margin-bottom: 24px; }
   .about-grid { grid-template-columns: 1fr; }
   .pos-item { grid-template-columns: 1fr; }
   .pos-dot { display: none; }
