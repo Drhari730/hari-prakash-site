@@ -115,4 +115,7 @@ app.get('/admin', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  // Persistence sanity check: this MUST point at the mounted volume in production
+  // (e.g. /data) or admin edits are written to ephemeral disk and lost on redeploy.
+  console.log(`[persistence] DATA_DIR=${store.DATA_DIR} -> content file at ${store.CONTENT_PATH}`);
 });
