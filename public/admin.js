@@ -71,12 +71,13 @@ const SECTION_CONFIGS = {
   conferences: {
     label: 'Conference Presentations', kind: 'list',
     fields: [
-      { key: 'type', label: 'Type', type: 'select', options: ['oral', 'poster', 'prototype', 'paper'] },
+      { key: 'type', label: 'Type', type: 'select', options: ['oral', 'poster', 'prototype', 'paper', 'leadership'] },
       { key: 'title', label: 'Title', type: 'textarea' },
       { key: 'event', label: 'Event', type: 'text' },
-      { key: 'award', label: 'Award (optional)', type: 'text' }
+      { key: 'award', label: 'Award (optional)', type: 'text' },
+      { key: 'link', label: 'Link (optional)', type: 'text' }
     ],
-    blank: { type: 'oral', title: '', event: '', award: '' }
+    blank: { type: 'oral', title: '', event: '', award: '', link: '' }
   }
 };
 

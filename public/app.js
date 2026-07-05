@@ -5,7 +5,7 @@ const CAT_LABELS = {
   dental: 'Oral Health', mededu: 'Medical Education'
 };
 const STATUS_LABELS = { live: 'Live', development: 'In Development', planned: 'Planned', prototype: 'Prototype' };
-const CONF_TYPE_LABELS = { oral: 'Oral', poster: 'Poster', prototype: 'Prototype', paper: 'Paper' };
+const CONF_TYPE_LABELS = { oral: 'Oral', poster: 'Poster', prototype: 'Prototype', paper: 'Paper', leadership: 'Organising' };
 
 function esc(s) {
   return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -191,6 +191,7 @@ function renderConferences() {
         <div class="conf-title">${esc(c.title)}</div>
         <div class="conf-event">${esc(c.event)}</div>
         ${c.award ? `<div class="conf-award">${esc(c.award)}</div>` : ''}
+        ${c.link ? `<div style="margin-top:4px"><a class="inv-link" href="${esc(c.link)}" target="_blank" rel="noopener">View Website →</a></div>` : ''}
       </div>
     </div>
   `).join('');

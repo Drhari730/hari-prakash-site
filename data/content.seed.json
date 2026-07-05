@@ -44,7 +44,6 @@
     { "name": "Machine Learning (RF, XGBoost)", "level": "Intermediate", "pct": 75 }
   ],
   "affiliations": [
-    "Joint Organising Secretary, <a href=\"https://ncdph-msruas.com/\" target=\"_blank\" style=\"color:var(--teal)\">National Conference on Public Health and Digital Health (NCPDH 2026)</a>",
     "Associate Editor, Archives of Public Health (BMC / Springer Nature)",
     "Associate Editor, Clinical Epidemiology and Global Health (Elsevier)",
     "Member, European Society of Medical Oncology (ESMO)"
@@ -156,6 +155,7 @@
     { "title": "Dynamic CBME in action: rule-based digital case-based learning to evaluate antibiotic-stewardship reasoning in MBBS learners", "authors": "Kumar SD, Dandekar S, Prakash GH", "journal": "BMC Medical Education", "year": "2026", "doi": "10.1186/s12909-026-09810-7", "cat": "mededu" }
   ],
   "conferences": [
+    { "type": "leadership", "title": "Joint Organising Secretary", "event": "National Conference on Public Health and Digital Health (NCPDH 2026)", "link": "https://ncdph-msruas.com/" },
     { "type": "oral", "title": "User-centred design and clinical validation of a comprehensive mHealth platform for enhanced chemotherapy management", "event": "ESMO Annual Meeting 2025 · Abstract 849P", "award": "" },
     { "type": "poster", "title": "Digital patient-reported outcomes in cancer care: Quality of life and symptom trajectories using a mobile health platform", "event": "ESMO Asia 2024 · Abstract 422P", "award": "ESMO Travel Grant Awardee" },
     { "type": "poster", "title": "Mobile application-based intervention in improving treatment adherence and QoL in cancer patients", "event": "ESMO Asia 2024 · Ann Oncol. 2024;35:S1172", "award": "" },
