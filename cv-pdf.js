@@ -61,7 +61,7 @@ function generateCvPdf(content, res) {
   doc.font('Times-Roman').fontSize(11).fillColor(mutedColor).text(profile.credentials, { align: 'center' });
   doc.moveDown(0.35);
   doc.fontSize(9.5).fillColor(mutedColor).text(
-    `${profile.email}    |    ${profile.phone}    |    ORCID: ${profile.orcid}`,
+    `www.drhari.co.in    |    ${profile.email}    |    ${profile.phone}    |    ORCID: ${profile.orcid}`,
     { align: 'center' }
   );
   doc.moveDown(0.55);
