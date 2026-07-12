@@ -180,6 +180,28 @@ function generateCvPdf(content, res) {
     affiliations.forEach(a => bullet(a, 0.28));
   }
 
+  // References
+  heading('References');
+  const refs = [
+    {
+      name: 'Dr Sunil Kumar D',
+      title: 'Professor and Head, Department of Community Medicine, JSS Medical College, JSS AHER, Mysuru, India',
+      contact: 'Email: sunilkumard@jssuni.edu.in | Mobile: +91 6366366663'
+    },
+    {
+      name: 'Dr Praveen Kulkarni',
+      title: 'Scientist E, ICMR National Institute of Child Health Research, New Delhi, India',
+      contact: 'Email: prakulfi@gmail.com | Mobile: +91 9008926878'
+    }
+  ];
+  
+  refs.forEach(r => {
+    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(r.name, { lineGap: 1 });
+    doc.font('Times-Roman').fontSize(9.5).fillColor(mutedColor).text(r.title, { lineGap: 1 });
+    doc.font('Times-Roman').fillColor(accentColor).text(r.contact, { lineGap: GAP });
+    doc.moveDown(0.35);
+  });
+
   doc.end();
 }
 
