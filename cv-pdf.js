@@ -51,7 +51,7 @@ function generateCvPdf(content, res) {
   // A bulleted entry with a hanging indent, so wrapped lines align under the text (not the bullet).
   function bullet(str, gap = 0.32) {
     doc.font('Times-Roman').fontSize(BODY).fillColor(textColor)
-      .text(str, { indent: 12, align: 'left', lineGap: GAP, paragraphGap: 0 });
+      .text(str, { indent: 12, align: 'justify', lineGap: GAP, paragraphGap: 0 });
     doc.moveDown(gap);
   }
 
@@ -110,8 +110,8 @@ function generateCvPdf(content, res) {
   // Digital health inventions
   heading('Digital Health Inventions & Tools');
   inventions.forEach(inv => {
-    doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text(inv.name + ': ', { continued: true });
-    doc.font('Times-Roman').fillColor(textColor).text(inv.desc, { lineGap: GAP });
+    doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text(inv.name + ': ', { continued: true, align: 'justify' });
+    doc.font('Times-Roman').fillColor(textColor).text(inv.desc, { align: 'justify', lineGap: GAP });
     doc.moveDown(0.32);
   });
   if (patent && patent.text) {
@@ -140,13 +140,13 @@ function generateCvPdf(content, res) {
       const m = OWN_NAME_RE.exec(p.authors);
       const tail = citationTail(p);
       if (!m) {
-        doc.text(`${n}. ${p.authors}${tail}`, { align: 'left', lineGap: GAP });
+        doc.text(`${n}. ${p.authors}${tail}`, { align: 'justify', lineGap: GAP });
       } else {
         const before = `${n}. ` + p.authors.slice(0, m.index);
         const after = p.authors.slice(m.index + m[0].length) + tail;
-        doc.text(before, { continued: true, lineGap: GAP });
-        doc.font('Times-Bold').text(m[0], { continued: true, lineGap: GAP });
-        doc.font('Times-Roman').text(after, { continued: false, align: 'left', lineGap: GAP });
+        doc.text(before, { continued: true, align: 'justify', lineGap: GAP });
+        doc.font('Times-Bold').text(m[0], { continued: true });
+        doc.font('Times-Roman').text(after, { continued: false, align: 'justify', lineGap: GAP });
       }
       doc.moveDown(0.42);
       n += 1;
@@ -162,9 +162,9 @@ function generateCvPdf(content, res) {
   });
 
   // Teaching
-  heading('Teaching & Supervision');
-  doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text('Courses taught: ', { continued: true });
-  doc.font('Times-Roman').text(teaching.courses.join(', '), { lineGap: GAP });
+  heading('Teaching, Workshops & Consultations');
+  doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text('Courses taught: ', { continued: true, align: 'justify' });
+  doc.font('Times-Roman').text(teaching.courses.join(', '), { align: 'justify', lineGap: GAP });
   doc.moveDown(0.4);
   doc.font('Times-Roman').fontSize(BODY).text(teaching.thesisSupervision, { align: 'justify', lineGap: GAP });
   doc.moveDown(0.4);
