@@ -99,7 +99,6 @@
   "ncdSuite": [
     { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app — glucose logging, medication reminders, diet guidance.", "status": "development", "link": "", "image": "Glydecare.jpeg" },
     { "condition": "Hypertension", "icon": "❤️", "name": "BP-Mitra", "desc": "Hypertension risk prediction and blood-pressure tracking app for personalised prevention.", "status": "live", "link": "https://github.com/Drhari730/BP-Mitra", "image": "BP Mitra.jpeg" },
-    { "condition": "Mental Health", "icon": "🧠", "name": "Mannmitra", "desc": "Mental health daily mood tracking and support companion.", "status": "live", "link": "", "image": "Mannmitra.jpeg" },
     { "condition": "Asthma", "icon": "🌬️", "name": "Shwasak", "desc": "Asthma management system — symptom tracking and trigger monitoring.", "status": "development", "link": "", "image": "shwasak.jpeg" },
     { "condition": "COPD", "icon": "🫁", "name": "COPD Companion (planned)", "desc": "Respiratory symptom and exacerbation-risk tracker for COPD patients — in early planning.", "status": "planned", "link": "" },
     { "condition": "Cancer", "icon": "🎗️", "name": "Onco-Care / Onco-diet", "desc": "Chemotherapy management platform (Onco-Care, live) plus a companion diet-recommendation app for oncology patients (Onco-diet, in development).", "status": "live", "link": "https://onco-care.in/", "image": "Oncodiet.jpeg" },
