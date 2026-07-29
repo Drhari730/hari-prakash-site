@@ -441,3 +441,22 @@ footer a:hover { color: rgba(255,255,255,.7); }
 
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .fade-up.visible { opacity: 1; transform: none; }
+
+.lightbox {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85); z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.lightbox.active { opacity: 1; pointer-events: auto; }
+.lightbox img {
+  max-width: 90%; max-height: 90vh; border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.lightbox.active img { transform: scale(1); }
+.app-screenshot {
+  height: 280px; width: 100%; object-fit: cover; object-position: top;
+  border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+}
+.app-screenshot:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }

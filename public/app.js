@@ -115,7 +115,7 @@ function renderGrants() {
 function renderInventions() {
   document.getElementById('inventionsGrid').innerHTML = DATA.inventions.map(inv => `
     <div class="inv-card fade-up">
-      ${inv.image ? `<div style="text-align:center; margin-bottom: 16px;"><img src="/${esc(inv.image)}" alt="${esc(inv.name)}" style="height: 220px; width: 100%; object-fit: contain; border-radius: 8px;"></div>` : `<div class="inv-icon">${inv.icon || '🔧'}</div>`}
+      ${inv.image ? `<div style="text-align:center; margin-bottom: 16px;"><img src="/${esc(inv.image)}" alt="${esc(inv.name)}" class="app-screenshot" onclick="openLightbox('/${esc(inv.image)}')"></div>` : `<div class="inv-icon">${inv.icon || '🔧'}</div>`}
       <div class="inv-name">${esc(inv.name)}</div>
       <div class="inv-desc">${esc(inv.desc)}</div>
       <div class="inv-footer">
@@ -130,17 +130,26 @@ function renderInventions() {
 }
 
 function renderNcdSuite() {
-  document.getElementById('ncdGrid').innerHTML = DATA.ncdSuite.map(n => `
+  document.getElementById('ncdGrid').innerHTML = DATA.ncdSuite.map(n => {
+    const hasGithubLink = n.link && n.link.includes('github.com');
+    return `
     <div class="ncd-card fade-up">
-      ${n.image ? `<div style="text-align:center; margin-bottom: 16px;"><img src="/${esc(n.image)}" alt="${esc(n.name)}" style="height: 220px; width: 100%; object-fit: contain; border-radius: 8px;"></div>` : `<div class="ncd-icon">${n.icon || '🩺'}</div>`}
+      ${n.image ? `<div style="text-align:center; margin-bottom: 16px;"><img src="/${esc(n.image)}" alt="${esc(n.name)}" class="app-screenshot" onclick="openLightbox('/${esc(n.image)}')"></div>` : `<div class="ncd-icon">${n.icon || '🩺'}</div>`}
       <div class="ncd-condition">${esc(n.condition)}</div>
       <div class="ncd-name">${esc(n.name)}</div>
       <div class="ncd-desc">${esc(n.desc)}</div>
       <span class="ncd-status ${n.status}">${STATUS_LABELS[n.status] || n.status}</span>
-      ${n.link ? `<div style="margin-top:8px"><a class="inv-link" style="color:var(--maroon)" href="${esc(n.link)}" target="_blank" rel="noopener">View →</a></div>` : ''}
+      ${n.link && !hasGithubLink ? `<div style="margin-top:8px"><a class="inv-link" style="color:var(--maroon)" href="${esc(n.link)}" target="_blank" rel="noopener">View →</a></div>` : ''}
     </div>
-  `).join('');
+  `;}).join('');
 }
+
+window.openLightbox = function(src) {
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  lb.classList.add('active');
+};
 
 let activePubFilter = 'all';
 function renderPublications() {
