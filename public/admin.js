@@ -22,7 +22,8 @@ const SECTION_CONFIGS = {
       { key: 'desc', label: 'Description', type: 'textarea' },
       { key: 'status', label: 'Status', type: 'select', options: ['live', 'development', 'planned', 'prototype'] },
       { key: 'badge', label: 'Badge text (e.g. "Web-based")', type: 'text' },
-      { key: 'link', label: 'Link (optional)', type: 'text' }
+      { key: 'link', label: 'Link (optional)', type: 'text' },
+      { key: 'image', label: 'Image filename (e.g. "aura.jpeg")', type: 'text' }
     ],
     blank: { icon: '🔧', name: '', desc: '', status: 'development', badge: '', link: '' }
   },
@@ -34,9 +35,10 @@ const SECTION_CONFIGS = {
       { key: 'name', label: 'App name', type: 'text' },
       { key: 'desc', label: 'Description', type: 'textarea' },
       { key: 'status', label: 'Status', type: 'select', options: ['live', 'development', 'planned'] },
-      { key: 'link', label: 'Link (optional)', type: 'text' }
+      { key: 'link', label: 'Link (optional)', type: 'text' },
+      { key: 'image', label: 'Image filename (e.g. "aura.jpeg")', type: 'text' }
     ],
-    blank: { condition: '', icon: '🩺', name: '', desc: '', status: 'development', link: '' }
+    blank: { condition: '', icon: '🩺', name: '', desc: '', status: 'development', link: '', image: '' }
   },
   education: {
     label: 'Education / Qualifications', kind: 'list',

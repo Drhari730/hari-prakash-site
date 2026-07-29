@@ -115,7 +115,7 @@ function renderGrants() {
 function renderInventions() {
   document.getElementById('inventionsGrid').innerHTML = DATA.inventions.map(inv => `
     <div class="inv-card fade-up">
-      <div class="inv-icon">${inv.icon || '🔧'}</div>
+      ${inv.image ? `<div style="text-align:center; margin-bottom: 16px;"><img src="/${esc(inv.image)}" alt="${esc(inv.name)}" style="height: 220px; width: 100%; object-fit: contain; border-radius: 8px;"></div>` : `<div class="inv-icon">${inv.icon || '🔧'}</div>`}
       <div class="inv-name">${esc(inv.name)}</div>
       <div class="inv-desc">${esc(inv.desc)}</div>
       <div class="inv-footer">
@@ -132,7 +132,7 @@ function renderInventions() {
 function renderNcdSuite() {
   document.getElementById('ncdGrid').innerHTML = DATA.ncdSuite.map(n => `
     <div class="ncd-card fade-up">
-      <div class="ncd-icon">${n.icon || '🩺'}</div>
+      ${n.image ? `<div style="text-align:center; margin-bottom: 16px;"><img src="/${esc(n.image)}" alt="${esc(n.name)}" style="height: 220px; width: 100%; object-fit: contain; border-radius: 8px;"></div>` : `<div class="ncd-icon">${n.icon || '🩺'}</div>`}
       <div class="ncd-condition">${esc(n.condition)}</div>
       <div class="ncd-name">${esc(n.name)}</div>
       <div class="ncd-desc">${esc(n.desc)}</div>
