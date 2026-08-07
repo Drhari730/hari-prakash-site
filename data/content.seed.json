@@ -85,7 +85,7 @@
     "text": "Hari Prakash G, Kumar SD, Yadav D, Sunitha S. A reflection-based intraoral imaging device for dental examination and a method of operating the device. Indian Patent Application No. 202541003820. Published January 31, 2025."
   },
   "inventions": [
-    { "icon": "📱", "name": "Onco Care App", "desc": "Comprehensive mHealth platform for cancer patients — remote monitoring, symptom tracking, chemotherapy planning, nutrition guidance, peer support.", "status": "live", "badge": "Google Play · onco-care.in", "link": "https://onco-care.in/", "image": "Oncodiet.jpeg" },
+    { "icon": "📱", "name": "Onco Care App", "desc": "Comprehensive mHealth platform for cancer patients — remote monitoring, symptom tracking, chemotherapy planning, nutrition guidance, peer support.", "status": "live", "badge": "Google Play · onco-care.in", "link": "https://onco-care.in/", "image": "oncocare.jpeg" },
     { "icon": "🧠", "name": "AikyaMind", "desc": "Adolescent mental health mHealth application — self-screening, counselling support, and educational resources.", "status": "live", "badge": "Google Play Store", "link": "" },
     { "icon": "🔎", "name": "Prama AI", "desc": "AI-assisted collaborative systematic review & meta-analysis platform — PRISMA-adherent screening workflow, active learning, live team collaboration, forest and funnel plots.", "status": "live", "badge": "Web-based", "link": "https://www.pramanasrma.in/" },
     { "icon": "🕸️", "name": "Sangam NMA", "desc": "Network meta-analysis workbench built on R/netmeta — league tables, rankings, node-splitting, publication-ready manuscript export.", "status": "live", "badge": "Web-based", "link": "https://sangam-web-production.up.railway.app" },
@@ -101,9 +101,10 @@
     { "condition": "Hypertension", "icon": "❤️", "name": "BP-Mitra", "desc": "Hypertension risk prediction and blood-pressure tracking app for personalised prevention.", "status": "live", "link": "https://github.com/Drhari730/BP-Mitra", "image": "BP Mitra.jpeg" },
     { "condition": "Asthma", "icon": "🌬️", "name": "Shwasak", "desc": "Asthma management system — symptom tracking and trigger monitoring.", "status": "development", "link": "", "image": "shwasak.jpeg" },
     { "condition": "COPD", "icon": "🫁", "name": "COPD Companion (planned)", "desc": "Respiratory symptom and exacerbation-risk tracker for COPD patients — in early planning.", "status": "planned", "link": "" },
-    { "condition": "Cancer", "icon": "🎗️", "name": "Onco-Care / Onco-diet", "desc": "Chemotherapy management platform (Onco-Care, live) plus a companion diet-recommendation app for oncology patients (Onco-diet, in development).", "status": "live", "link": "https://onco-care.in/", "image": "Oncodiet.jpeg" },
+    { "condition": "Cancer", "icon": "🎗️", "name": "Onco-Care / Onco-diet", "desc": "Chemotherapy management platform (Onco-Care, live) plus a companion diet-recommendation app for oncology patients (Onco-diet, in development).", "status": "live", "link": "https://onco-care.in/", "image": "oncocare.jpeg" },
     { "condition": "Infectious Diseases", "icon": "💊", "name": "AURA", "desc": "Oral antibiotic adherence system with smart reminders and side effect monitoring.", "status": "live", "link": "", "image": "aura.jpeg" },
-    { "condition": "TB", "icon": "🫧", "name": "TB-Mitra", "desc": "Tuberculosis medication adherence and patient support app.", "status": "development", "link": "", "image": "TB Mitra.jpeg" }
+    { "condition": "TB", "icon": "🫧", "name": "TB-Mitra", "desc": "Tuberculosis medication adherence and patient support app.", "status": "development", "link": "", "image": "TB Mitra.jpeg" },
+    { "condition": "Medical Education", "icon": "💊", "name": "PHAMORA", "desc": "Mobile learning app that turns clinical pharmacology into an interactive, exam-ready study experience with clinical cases and flashcards.", "status": "development", "link": "", "image": "phamora.jpeg" }
   ],
   "publications": [
     { "title": "Cervical cancer and human papillomavirus (HPV) vaccination awareness among university students: A global scoping review of knowledge, attitudes, and barriers", "authors": "Shwetha CV, Prakash GH, Darukaradhya TB", "journal": "Journal of Oncology Pharmacy Practice", "year": "2026", "doi": "10.1177/10781552261446556", "cat": "oncology" },
