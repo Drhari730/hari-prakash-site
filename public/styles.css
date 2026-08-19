@@ -469,13 +469,22 @@ footer a:hover { color: rgba(255,255,255,.7); }
   .pub-header-wrap { flex-direction: column; gap: 24px; }
   .pub-chart-wrap { width: 100%; max-width: 600px; }
 }
-.pub-chart-row { display: flex; align-items: center; gap: 16px; }
-.pub-chart-label { width: 160px; font-size: 0.82rem; color: var(--navy); font-weight: 600; text-align: right; line-height: 1.2; }
+.pub-chart-row { display: flex; align-items: center; gap: 16px; padding: 4px 8px; border-radius: 8px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; margin: -4px -8px; }
+.pub-chart-wrap:hover .pub-chart-row:not(:hover) { opacity: 0.3; filter: grayscale(80%); }
+.pub-chart-row:hover { transform: scale(1.05) translateX(5px); background: #ffffff; box-shadow: 0 4px 15px rgba(0,0,0,0.06); z-index: 2; position: relative; }
+.pub-chart-label { width: 160px; font-size: 0.82rem; color: var(--navy); font-weight: 600; text-align: right; line-height: 1.2; transition: color 0.3s; }
+.pub-chart-row:hover .pub-chart-label { color: var(--accent); }
 .pub-chart-bar-bg { flex: 1; height: 10px; background: var(--rule); border-radius: 5px; overflow: hidden; }
-.pub-chart-bar-fill { height: 100%; border-radius: 5px; width: 0; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.pub-chart-val { font-size: 0.85rem; font-weight: 700; color: var(--navy); width: 30px; text-align: left; }
+.pub-chart-bar-fill { height: 100%; border-radius: 5px; width: 0; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s; }
+.pub-chart-val { font-size: 0.85rem; font-weight: 700; color: var(--navy); width: 30px; text-align: left; transition: transform 0.3s; }
+.pub-chart-row:hover .pub-chart-val { transform: scale(1.1); }
 .fill-oncology { background: #4f46e5; }
 .fill-digital { background: var(--teal); }
 .fill-ncd { background: #d97706; }
 .fill-dental { background: #db2777; }
 .fill-mededu { background: #0284c7; }
+.pub-chart-row:hover .fill-oncology { box-shadow: 0 0 12px rgba(79, 70, 229, 0.6); }
+.pub-chart-row:hover .fill-digital { box-shadow: 0 0 12px rgba(42, 138, 138, 0.6); }
+.pub-chart-row:hover .fill-ncd { box-shadow: 0 0 12px rgba(217, 119, 6, 0.6); }
+.pub-chart-row:hover .fill-dental { box-shadow: 0 0 12px rgba(219, 39, 119, 0.6); }
+.pub-chart-row:hover .fill-mededu { box-shadow: 0 0 12px rgba(2, 132, 199, 0.6); }
