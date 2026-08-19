@@ -27,6 +27,9 @@ function highlightAuthors(s) {
 
 function renderHero() {
   const p = DATA.profile;
+  if (p.stats && p.stats.length > 0) {
+    p.stats[0].num = DATA.publications.length;
+  }
   document.getElementById('heroEyebrow').textContent = p.eyebrow;
   document.getElementById('heroName').textContent = p.name;
   document.getElementById('heroSub').innerHTML = `${esc(p.credentials)}<br>${esc(p.tagline)}`;
@@ -163,6 +166,36 @@ function renderPublications() {
     `<button class="pub-filter active" data-filter="all">All (${pubs.length})</button>`,
     ...cats.map(c => `<button class="pub-filter" data-filter="${c}">${CAT_LABELS[c]} (${counts[c]})</button>`)
   ].join('');
+
+  // Render animated chart
+  const maxCount = Math.max(...cats.map(c => counts[c]));
+  const chartHtml = cats.map(c => {
+    const pct = (counts[c] / maxCount) * 100;
+    return `
+      <div class="pub-chart-row">
+        <div class="pub-chart-label">${CAT_LABELS[c]}</div>
+        <div class="pub-chart-bar-bg">
+          <div class="pub-chart-bar-fill fill-${c}" style="width: 0%" data-width="${pct}%"></div>
+        </div>
+        <div class="pub-chart-val">${counts[c]}</div>
+      </div>
+    `;
+  }).join('');
+  
+  let chartWrap = document.getElementById('pubChartWrap');
+  if (!chartWrap) {
+    chartWrap = document.createElement('div');
+    chartWrap.id = 'pubChartWrap';
+    chartWrap.className = 'pub-chart-wrap';
+    document.getElementById('pubFilters').parentNode.insertBefore(chartWrap, document.getElementById('pubFilters'));
+  }
+  chartWrap.innerHTML = chartHtml;
+  
+  setTimeout(() => {
+    chartWrap.querySelectorAll('.pub-chart-bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  }, 100);
 
   document.getElementById('pubList').innerHTML = pubs.map((p, i) => `
     <div class="pub-card" data-cat="${p.cat}">

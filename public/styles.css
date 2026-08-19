@@ -460,3 +460,15 @@ footer a:hover { color: rgba(255,255,255,.7); }
   border-radius: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
 }
 .app-screenshot:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+.pub-chart-wrap { margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; max-width: 600px; }
+.pub-chart-row { display: flex; align-items: center; gap: 16px; }
+.pub-chart-label { width: 160px; font-size: 0.82rem; color: var(--navy); font-weight: 600; text-align: right; line-height: 1.2; }
+.pub-chart-bar-bg { flex: 1; height: 10px; background: var(--rule); border-radius: 5px; overflow: hidden; }
+.pub-chart-bar-fill { height: 100%; border-radius: 5px; width: 0; transition: width 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.pub-chart-val { font-size: 0.85rem; font-weight: 700; color: var(--navy); width: 30px; text-align: left; }
+.fill-oncology { background: #4f46e5; }
+.fill-digital { background: var(--teal); }
+.fill-ncd { background: #d97706; }
+.fill-dental { background: #db2777; }
+.fill-mededu { background: #0284c7; }
