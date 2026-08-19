@@ -461,7 +461,14 @@ footer a:hover { color: rgba(255,255,255,.7); }
 }
 .app-screenshot:hover { transform: scale(1.02); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
-.pub-chart-wrap { margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; max-width: 600px; }
+.pub-header-wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; margin-bottom: 24px; }
+.pub-header-left { flex: 1; }
+.pub-header-left .sec-desc { max-width: 100%; }
+.pub-chart-wrap { display: flex; flex-direction: column; gap: 10px; width: 400px; flex-shrink: 0; margin-top: 8px; }
+@media (max-width: 900px) {
+  .pub-header-wrap { flex-direction: column; gap: 24px; }
+  .pub-chart-wrap { width: 100%; max-width: 600px; }
+}
 .pub-chart-row { display: flex; align-items: center; gap: 16px; }
 .pub-chart-label { width: 160px; font-size: 0.82rem; color: var(--navy); font-weight: 600; text-align: right; line-height: 1.2; }
 .pub-chart-bar-bg { flex: 1; height: 10px; background: var(--rule); border-radius: 5px; overflow: hidden; }

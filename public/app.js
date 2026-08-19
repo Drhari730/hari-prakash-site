@@ -182,20 +182,23 @@ function renderPublications() {
     `;
   }).join('');
   
-  let chartWrap = document.getElementById('pubChartWrap');
-  if (!chartWrap) {
-    chartWrap = document.createElement('div');
-    chartWrap.id = 'pubChartWrap';
-    chartWrap.className = 'pub-chart-wrap';
-    document.getElementById('pubFilters').parentNode.insertBefore(chartWrap, document.getElementById('pubFilters'));
+  const chartWrap = document.getElementById('pubChartWrap');
+  if (chartWrap) {
+    chartWrap.innerHTML = chartHtml;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            chartWrap.querySelectorAll('.pub-chart-bar-fill').forEach(bar => {
+              bar.style.width = bar.dataset.width;
+            });
+          }, 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(chartWrap);
   }
-  chartWrap.innerHTML = chartHtml;
-  
-  setTimeout(() => {
-    chartWrap.querySelectorAll('.pub-chart-bar-fill').forEach(bar => {
-      bar.style.width = bar.dataset.width;
-    });
-  }, 100);
 
   document.getElementById('pubList').innerHTML = pubs.map((p, i) => `
     <div class="pub-card" data-cat="${p.cat}">
