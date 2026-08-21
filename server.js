@@ -172,6 +172,58 @@ app.delete('/api/vritta/meetings/:id', auth.requireAdmin, (req, res) => {
   res.json({ ok: removed });
 });
 
+// Summarize a transcript into minutes (summary + decisions + actions) using
+// Claude when ANTHROPIC_API_KEY is set. Returns 503 if not configured so the
+// client can fall back to its on-device analysis.
+app.post('/api/vritta/summarize', auth.requireAdmin, async (req, res) => {
+  try {
+    const { transcript, title, date, attendees } = req.body || {};
+    if (!transcript || !String(transcript).trim()) {
+      return res.status(400).json({ error: 'No transcript provided.' });
+    }
+    const key = process.env.ANTHROPIC_API_KEY;
+    if (!key) return res.status(503).json({ code: 'NO_AI', error: 'AI summariser is not configured.' });
+
+    const prompt =
+      `You are writing the minutes for a meeting titled "${title || 'Meeting'}".` +
+      (date ? ` Date: ${date}.` : '') +
+      ` Attendees: ${(attendees || []).join(', ') || 'unspecified'}.\n\n` +
+      `From the transcript below, produce concise, faithful minutes as STRICT JSON with keys:\n` +
+      `- "summary": a short paragraph (2-4 sentences) of what the meeting covered and concluded.\n` +
+      `- "decisions": array of short strings — only actual decisions or agreements.\n` +
+      `- "actions": array of {"task","owner","due"} — owner is an attendee name if attributable else "", due is YYYY-MM-DD only if a date/deadline is stated else "".\n` +
+      `Do NOT invent anything not supported by the transcript. Return ONLY the JSON object.\n\n` +
+      `Transcript:\n"""${String(transcript).slice(0, 12000)}"""`;
+
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
+      body: JSON.stringify({
+        model: process.env.ANTHROPIC_MODEL || 'claude-haiku-4-5-20251001',
+        max_tokens: 1200,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+    if (!r.ok) {
+      const t = await r.text();
+      return res.status(502).json({ error: 'AI service error (' + r.status + ')', detail: t.slice(0, 200) });
+    }
+    const data = await r.json();
+    const txt = (data.content && data.content[0] && data.content[0].text) || '';
+    const match = txt.match(/\{[\s\S]*\}/);
+    const parsed = JSON.parse(match ? match[0] : txt);
+    res.json({
+      summary: parsed.summary || '',
+      decisions: Array.isArray(parsed.decisions) ? parsed.decisions : [],
+      actions: (Array.isArray(parsed.actions) ? parsed.actions : [])
+        .map(a => ({ task: a.task || '', owner: a.owner || '', due: a.due || '' }))
+        .filter(a => a.task)
+    });
+  } catch (err) {
+    res.status(502).json({ error: 'Could not summarize: ' + err.message });
+  }
+});
+
 // Send a meeting invitation and/or minutes by email (real SMTP).
 app.post('/api/vritta/invite', auth.requireAdmin, async (req, res) => {
   try {
