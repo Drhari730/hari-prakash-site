@@ -113,6 +113,11 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
+// ---- Vritta: private in-browser meeting recorder & minutes tool ----
+app.get(['/vritta', '/vritta/'], (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'vritta', 'index.html'));
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   // Persistence sanity check: this MUST point at the mounted volume in production
