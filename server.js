@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 
 const store = require('./lib/store');
 const auth = require('./lib/auth');
+const meetings = require('./lib/meetings');
+const mailer = require('./lib/mailer');
 const { generateCvPdf } = require('./cv-pdf');
 const { buildFromCrossref } = require('./lib/citation');
 
@@ -113,9 +115,82 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
-// ---- Vritta: private in-browser meeting recorder & minutes tool ----
+// ---- Vritta: meeting recorder, minutes, account journal & email invites ----
 app.get(['/vritta', '/vritta/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'vritta', 'index.html'));
+});
+
+// Whether server-side email is configured (so the UI can show/hide the feature).
+app.get('/api/vritta/config', (req, res) => {
+  res.json({ emailConfigured: mailer.isConfigured() });
+});
+
+// Meeting journal — persisted under the admin account (requires login).
+app.get('/api/vritta/meetings', auth.requireAdmin, (req, res) => {
+  res.json(meetings.list());
+});
+
+app.get('/api/vritta/meetings/:id', auth.requireAdmin, (req, res) => {
+  const m = meetings.get(req.params.id);
+  if (!m) return res.status(404).json({ error: 'Meeting not found' });
+  res.json(m);
+});
+
+app.post('/api/vritta/meetings', auth.requireAdmin, (req, res) => {
+  try {
+    const body = req.body || {};
+    if (!body.id) return res.status(400).json({ error: 'Meeting id is required' });
+    if (!body.title || !String(body.title).trim()) return res.status(400).json({ error: 'Meeting title is required' });
+    const saved = meetings.upsert(body);
+    res.json({ ok: true, id: saved.id, savedAt: saved.savedAt });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.delete('/api/vritta/meetings/:id', auth.requireAdmin, (req, res) => {
+  const removed = meetings.remove(req.params.id);
+  res.json({ ok: removed });
+});
+
+// Send a meeting invitation and/or minutes by email (real SMTP).
+app.post('/api/vritta/invite', auth.requireAdmin, async (req, res) => {
+  try {
+    const { recipients, subject, html, meeting, withInvite } = req.body || {};
+    const to = (recipients || []).map(r => String(r).trim()).filter(Boolean);
+    if (!to.length) return res.status(400).json({ error: 'Add at least one recipient email address.' });
+    if (!subject || !html) return res.status(400).json({ error: 'Subject and message body are required.' });
+    if (!mailer.isConfigured()) {
+      return res.status(503).json({
+        code: 'NOT_CONFIGURED',
+        error: 'Email is not configured on the server. Set SMTP_USER and SMTP_PASS in the Railway project variables.'
+      });
+    }
+
+    let ics = null;
+    if (withInvite && meeting && meeting.date) {
+      ics = mailer.buildIcs({
+        title: meeting.title || 'Meeting',
+        date: meeting.date,
+        time: meeting.time,
+        venue: meeting.venue,
+        description: meeting.summary || '',
+        organizer: meeting.chair || req.admin.email,
+        attendees: to.map(email => ({ email }))
+      });
+    }
+
+    const result = await mailer.send({ to, subject, html, ics });
+    res.json({
+      ok: true,
+      accepted: result.accepted,
+      rejected: result.rejected,
+      messageId: result.messageId
+    });
+  } catch (err) {
+    const status = err.code === 'NOT_CONFIGURED' ? 503 : 502;
+    res.status(status).json({ error: err.message, code: err.code || null });
+  }
 });
 
 app.listen(PORT, () => {
