@@ -4,6 +4,7 @@ const fs = require('fs');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
+const jwt = require('jsonwebtoken');
 const store = require('./lib/store');
 const auth = require('./lib/auth');
 const meetings = require('./lib/meetings');
@@ -118,6 +119,24 @@ app.get('/admin', (req, res) => {
 // ---- Vritta: meeting recorder, minutes, account journal & email invites ----
 app.get(['/vritta', '/vritta/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'vritta', 'index.html'));
+});
+
+// One-click SSO from ScholarDesk: verify the short-lived token signed with the
+// shared secret, then issue a normal admin session cookie and open Vritta.
+app.get('/vritta/sso', (req, res) => {
+  const token = req.query.token;
+  const secret = process.env.VRITTA_SSO_SECRET;
+  if (secret && token) {
+    try {
+      const payload = jwt.verify(String(token), secret);
+      if (payload && payload.purpose === 'vritta-sso') {
+        const adminEmail = process.env.ADMIN_EMAIL || 'admin';
+        auth.setAuthCookie(res, auth.signToken(adminEmail));
+        return res.redirect('/vritta');
+      }
+    } catch (e) { /* fall through to normal sign-in */ }
+  }
+  return res.redirect('/vritta?sso=failed');
 });
 
 // Whether server-side email is configured (so the UI can show/hide the feature).
