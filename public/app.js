@@ -30,10 +30,16 @@ function renderHero() {
   if (p.stats && p.stats.length > 0) {
     p.stats[0].num = DATA.publications.length;
   }
-  document.getElementById('heroEyebrow').textContent = p.eyebrow;
+  document.getElementById('heroEyebrow').innerHTML = `
+    <span class="hero-role-pill">Assistant Professor</span>
+    <span>${esc(p.eyebrow)}</span>
+  `;
   document.getElementById('heroName').textContent = p.name;
   document.getElementById('heroSub').innerHTML = `${esc(p.credentials)}<br>${esc(p.tagline)}`;
-  document.getElementById('heroTags').innerHTML = p.tags.map(t => `<span class="hero-tag">${esc(t)}</span>`).join('');
+  document.getElementById('heroTags').innerHTML = p.tags.map(t => {
+    const isRole = t.toLowerCase().includes('assistant professor');
+    return `<span class="hero-tag ${isRole ? 'hero-tag-role' : ''}">${esc(t)}</span>`;
+  }).join('');
   document.getElementById('heroStats').innerHTML = p.stats.map((s, i) => `
     ${i > 0 ? '<div class="stat-divider"></div>' : ''}
     <div class="stat-row"><div class="stat-num">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>

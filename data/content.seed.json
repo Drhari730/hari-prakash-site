@@ -1,10 +1,10 @@
 {
   "profile": {
     "name": "Dr G. Hari Prakash",
-    "credentials": "PhD (Public Health) · Pharm.D · MPH",
+    "credentials": "Assistant Professor · PhD (Public Health) · Pharm.D · MPH",
     "eyebrow": "Digital Health · mHealth · Oncology",
     "tagline": "Translating implementation science into scalable, equitable digital health solutions for cancer and chronic disease management globally.",
-    "tags": ["mHealth Intervention Design", "Clinical Epidemiology", "Oncology Care", "LMIC Research", "Health Technology Assessment", "AI for Health"],
+    "tags": ["Assistant Professor", "mHealth Intervention Design", "Clinical Epidemiology", "Oncology Care", "LMIC Research", "Health Technology Assessment", "AI for Health"],
     "stats": [
       { "num": "43", "label": "Peer-reviewed publications across oncology, digital health, public health & medical education" },
       { "num": "10", "label": "Digital health tools & platforms built or co-led" },
