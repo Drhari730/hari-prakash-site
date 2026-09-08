@@ -116,6 +116,12 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
+// ---- Pariksha: computer-based exam portal (separate service) ----
+app.get(/^\/pariksha(\/.*)?$/, (req, res) => {
+  const rest = req.params[0] || '';
+  res.redirect(302, 'https://pariksha.drhari.co.in' + rest);
+});
+
 // ---- Vritta: meeting recorder, minutes, account journal & email invites ----
 app.get(['/vritta', '/vritta/'], (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'vritta', 'index.html'));

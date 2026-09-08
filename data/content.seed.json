@@ -96,7 +96,7 @@
     { "icon": "📊", "name": "SAM (Sample Size Calculator)", "desc": "Web-based sample size tool supporting 10+ study designs for researchers across disciplines.", "status": "live", "badge": "Web-based", "link": "" },
     { "icon": "🩺", "name": "CRISP", "desc": "Colorectal Risk Intelligence & Screening Predictor — AI-powered clinical risk tool for colorectal cancer screening.", "status": "live", "badge": "crisp_ai.oneapp.dev", "link": "" },
     { "icon": "⌚", "name": "Smart Wearable for Muscle Health", "desc": "Wearable prototype for detecting early signs of muscle wasting and fatigue in cancer care and rehabilitation.", "status": "prototype", "badge": "IIT Bombay MEDHA 2023", "link": "" },
-    { "icon": "📝", "name": "Pariksha", "desc": "Secure computer-based examination platform — randomised per-student papers, per-question timing, full-screen proctoring with tab-switch and copy-attempt logging, automatic grading, item analysis, and answer-similarity checks.", "status": "live", "badge": "Web-based", "link": "https://pariksha-web-production.up.railway.app" }
+    { "icon": "📝", "name": "Pariksha", "desc": "Secure computer-based examination platform — randomised per-student papers, per-question timing, full-screen proctoring with tab-switch and copy-attempt logging, automatic grading, item analysis, and answer-similarity checks.", "status": "live", "badge": "Web-based", "link": "https://pariksha.drhari.co.in" }
   ],
   "ncdSuite": [
     { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app — glucose logging, medication reminders, diet guidance.", "status": "development", "link": "", "image": "Glydecare.jpeg" },
