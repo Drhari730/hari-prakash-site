@@ -53,7 +53,7 @@ function generateCvPdf(content, res) {
   const GAP = 2.6;       // line gap within wrapped text blocks
 
   function heading(text) {
-    if (doc.y > doc.page.height - 110) {
+    if (doc.y > doc.page.height - 75) {
       doc.addPage();
     } else {
       doc.moveDown(0.9);
@@ -167,7 +167,7 @@ function generateCvPdf(content, res) {
   Object.keys(CAT_LABELS).forEach(cat => {
     if (!byCat[cat]) return;
     doc.moveDown(0.25);
-    doc.font('Times-Bold').fontSize(10.5).fillColor(tealColor).text('▪  ' + CAT_LABELS[cat], { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(tealColor).text(CAT_LABELS[cat], { lineGap: 1 });
     doc.moveDown(0.3);
     doc.fillColor(textColor).font('Times-Roman').fontSize(9.4);
     byCat[cat].forEach(p => {
@@ -254,10 +254,13 @@ function generateCvPdf(content, res) {
     
     // Bottom thin divider & page footer
     doc.moveTo(34, h - 36).lineTo(w - 34, h - 36).strokeColor('#e2e8f0').lineWidth(0.8).stroke();
+    const savedMargin = doc.page.margins.bottom;
+    doc.page.margins.bottom = 0;
     doc.font('Times-Roman').fontSize(8.5).fillColor(mutedColor)
-       .text('Dr G. Hari Prakash  |  Curriculum Vitae', 34, h - 29, { align: 'left', width: 250 });
+       .text('Dr G. Hari Prakash  |  Curriculum Vitae', 34, h - 29, { align: 'left', width: 250, lineBreak: false });
     doc.font('Times-Roman').fontSize(8.5).fillColor(mutedColor)
-       .text(`Page ${i + 1} of ${range.count}`, w - 234, h - 29, { align: 'right', width: 200 });
+       .text(`Page ${i + 1} of ${range.count}`, w - 234, h - 29, { align: 'right', width: 200, lineBreak: false });
+    doc.page.margins.bottom = savedMargin;
   }
 
   doc.end();
