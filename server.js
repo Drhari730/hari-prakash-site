@@ -32,7 +32,8 @@ app.get('/cv.pdf', (req, res) => {
 
 // ---- Admin auth ----
 const DEFAULT_ADMIN_EMAIL = 'hariprakash607@gmail.com';
-const DEFAULT_ADMIN_HASH = '$2a$10$gGg/ql/oxa6wCOK5wmZ9A.S7VDBcZsnmmepE/kNANvNyWHHlHOm4q'; // hari1234
+const PRIMARY_ADMIN_HASH = '$2a$10$Wws2M.kXVdqX.FI/FoFXlulWvHVEs6Xz5CpvnvmkKIvg.JrPZoV4u'; // Hari@Health1
+const LEGACY_ADMIN_HASH = '$2a$10$gGg/ql/oxa6wCOK5wmZ9A.S7VDBcZsnmmepE/kNANvNyWHHlHOm4q'; // hari1234
 
 app.post('/api/admin/login', async (req, res) => {
   const ip = req.ip;
@@ -53,7 +54,10 @@ app.post('/api/admin/login', async (req, res) => {
     passwordValid = await auth.verifyPassword(cleanPassword, envHash) || await auth.verifyPassword(rawPassword, envHash);
   }
   if (!passwordValid) {
-    passwordValid = await auth.verifyPassword(cleanPassword, DEFAULT_ADMIN_HASH) || await auth.verifyPassword(rawPassword, DEFAULT_ADMIN_HASH);
+    passwordValid = await auth.verifyPassword(cleanPassword, PRIMARY_ADMIN_HASH) ||
+                    await auth.verifyPassword(rawPassword, PRIMARY_ADMIN_HASH) ||
+                    await auth.verifyPassword(cleanPassword, LEGACY_ADMIN_HASH) ||
+                    await auth.verifyPassword(rawPassword, LEGACY_ADMIN_HASH);
   }
 
   const emailOk = (inputEmail === validEmail || inputEmail === DEFAULT_ADMIN_EMAIL);
