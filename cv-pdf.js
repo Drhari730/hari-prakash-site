@@ -16,12 +16,21 @@ const OWN_NAME_VARIANTS = [
 ];
 const OWN_NAME_RE = new RegExp(`(${OWN_NAME_VARIANTS.map(v => v.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
 
+function noEmDash(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/\s*—\s*/g, ' - ')
+    .replace(/—/g, ' - ')
+    .replace(/\s*–\s*/g, ' - ')
+    .replace(/–/g, '-');
+}
+
 function citationTail(p) {
   let s = `. ${p.title}. ${p.journal}. ${p.year}`;
   if (p.vol) s += `;${p.vol}`;
   s += '.';
   if (p.doi) s += ` doi:${p.doi}`;
-  return s;
+  return noEmDash(s);
 }
 
 function generateCvPdf(content, res) {
@@ -51,14 +60,14 @@ function generateCvPdf(content, res) {
   // A bulleted entry with a hanging indent, so wrapped lines align under the text (not the bullet).
   function bullet(str, gap = 0.32) {
     doc.font('Times-Roman').fontSize(BODY).fillColor(textColor)
-      .text(str, { indent: 12, align: 'justify', lineGap: GAP, paragraphGap: 0 });
+      .text(noEmDash(str), { indent: 12, align: 'justify', lineGap: GAP, paragraphGap: 0 });
     doc.moveDown(gap);
   }
 
   // Header
   doc.font('Times-Bold').fontSize(23).fillColor(textColor).text(profile.name.toUpperCase(), { align: 'center', characterSpacing: 0.5 });
   doc.moveDown(0.35);
-  doc.font('Times-Roman').fontSize(11).fillColor(mutedColor).text(profile.credentials, { align: 'center' });
+  doc.font('Times-Roman').fontSize(11).fillColor(mutedColor).text(noEmDash(profile.credentials), { align: 'center' });
   doc.moveDown(0.35);
   doc.fontSize(9.5).fillColor(mutedColor).text(
     `www.drhari.co.in    |    ${profile.email}    |    ${profile.phone}    |    ORCID: ${profile.orcid}`,
@@ -73,16 +82,19 @@ function generateCvPdf(content, res) {
   heading('Research Profile');
   doc.font('Times-Roman').fontSize(BODY).fillColor(textColor);
   about.paragraphs.forEach(p => {
-    doc.text(p.replace(/\*\*/g, ''), { align: 'justify', lineGap: GAP });
+    let t = p.replace(/\*\*/g, '');
+    const pubCount = (publications && publications.length) ? publications.length : 45;
+    t = t.replace(/Author of \d+ peer-reviewed publications/gi, `Author of ${pubCount} peer-reviewed publications`);
+    doc.text(noEmDash(t), { align: 'justify', lineGap: GAP });
     doc.moveDown(0.5);
   });
 
   // Education
   heading('Education');
   education.forEach(e => {
-    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(`${e.degree} — ${e.institution}`, { lineGap: 1 });
-    doc.font('Times-Roman').fontSize(9.3).fillColor(mutedColor).text(e.years);
-    if (e.thesis) doc.font('Times-Italic').fontSize(9.3).fillColor(mutedColor).text(`Thesis: ${e.thesis}`, { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(noEmDash(`${e.degree} - ${e.institution}`), { lineGap: 1 });
+    doc.font('Times-Roman').fontSize(9.3).fillColor(mutedColor).text(noEmDash(e.years));
+    if (e.thesis) doc.font('Times-Italic').fontSize(9.3).fillColor(mutedColor).text(noEmDash(`Thesis: ${e.thesis}`), { lineGap: 1 });
     doc.fillColor(textColor);
     doc.moveDown(0.55);
   });
@@ -90,8 +102,8 @@ function generateCvPdf(content, res) {
   // Positions
   heading('Academic & Professional Positions');
   positions.forEach(p => {
-    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(`${p.role}`, { lineGap: 1 });
-    doc.font('Times-Italic').fontSize(9.5).fillColor(mutedColor).text(`${p.org}  ·  ${p.years}`, { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(noEmDash(p.role), { lineGap: 1 });
+    doc.font('Times-Italic').fontSize(9.5).fillColor(mutedColor).text(noEmDash(`${p.org}  ·  ${p.years}`), { lineGap: 1 });
     doc.moveDown(0.2);
     doc.fillColor(textColor);
     (p.bullets || []).forEach(b => bullet(b, 0.18));
@@ -101,8 +113,8 @@ function generateCvPdf(content, res) {
   // Grants
   heading('Grants & Fellowships');
   grants.forEach(g => {
-    doc.font('Times-Bold').fontSize(10).fillColor(textColor).text(`${g.name} (${g.amount})`, { lineGap: 1 });
-    doc.font('Times-Roman').fontSize(9.3).fillColor(mutedColor).text(`${g.desc}  ·  ${g.years}`, { lineGap: GAP });
+    doc.font('Times-Bold').fontSize(10).fillColor(textColor).text(noEmDash(`${g.name} (${g.amount})`), { lineGap: 1 });
+    doc.font('Times-Roman').fontSize(9.3).fillColor(mutedColor).text(noEmDash(`${g.desc}  ·  ${g.years}`), { lineGap: GAP });
     doc.fillColor(textColor);
     doc.moveDown(0.45);
   });
@@ -110,14 +122,14 @@ function generateCvPdf(content, res) {
   // Digital health inventions
   heading('Digital Health Inventions & Tools');
   inventions.forEach(inv => {
-    doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text(inv.name + ': ', { continued: true, align: 'justify' });
-    doc.font('Times-Roman').fillColor(textColor).text(inv.desc, { align: 'justify', lineGap: GAP });
+    doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text(noEmDash(inv.name) + ': ', { continued: true, align: 'justify' });
+    doc.font('Times-Roman').fillColor(textColor).text(noEmDash(inv.desc), { align: 'justify', lineGap: GAP });
     doc.moveDown(0.32);
   });
   if (patent && patent.text) {
     doc.moveDown(0.15);
     doc.font('Times-Bold').fontSize(BODY).text('Patent: ', { continued: true });
-    doc.font('Times-Roman').text(patent.text, { lineGap: GAP });
+    doc.font('Times-Roman').text(noEmDash(patent.text), { lineGap: GAP });
   }
 
   // Publications
@@ -140,13 +152,13 @@ function generateCvPdf(content, res) {
       const m = OWN_NAME_RE.exec(p.authors);
       const tail = citationTail(p);
       if (!m) {
-        doc.text(`${n}. ${p.authors}${tail}`, { align: 'justify', lineGap: GAP });
+        doc.text(noEmDash(`${n}. ${p.authors}${tail}`), { align: 'justify', lineGap: GAP });
       } else {
         const before = `${n}. ` + p.authors.slice(0, m.index);
         const after = p.authors.slice(m.index + m[0].length) + tail;
-        doc.text(before, { continued: true, align: 'justify', lineGap: GAP });
-        doc.font('Times-Bold').text(m[0], { continued: true });
-        doc.font('Times-Roman').text(after, { continued: false, align: 'justify', lineGap: GAP });
+        doc.text(noEmDash(before), { continued: true, align: 'justify', lineGap: GAP });
+        doc.font('Times-Bold').text(noEmDash(m[0]), { continued: true });
+        doc.font('Times-Roman').text(noEmDash(after), { continued: false, align: 'justify', lineGap: GAP });
       }
       doc.moveDown(0.42);
       n += 1;
@@ -156,7 +168,7 @@ function generateCvPdf(content, res) {
   // Conferences
   heading('Conference Presentations');
   conferences.forEach(c => {
-    let line = `${c.title} — ${c.event}`;
+    let line = `${c.title} - ${c.event}`;
     if (c.award) line += ` (${c.award})`;
     bullet(line, 0.3);
   });
@@ -164,11 +176,11 @@ function generateCvPdf(content, res) {
   // Teaching
   heading('Teaching, Workshops & Consultations');
   doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text('Courses taught: ', { continued: true, align: 'justify' });
-  doc.font('Times-Roman').text(teaching.courses.join(', '), { align: 'justify', lineGap: GAP });
+  doc.font('Times-Roman').text(noEmDash(teaching.courses.join(', ')), { align: 'justify', lineGap: GAP });
   doc.moveDown(0.4);
-  doc.font('Times-Roman').fontSize(BODY).text(teaching.thesisSupervision, { align: 'justify', lineGap: GAP });
+  doc.font('Times-Roman').fontSize(BODY).text(noEmDash(teaching.thesisSupervision), { align: 'justify', lineGap: GAP });
   doc.moveDown(0.4);
-  doc.text(teaching.resourcePerson, { align: 'justify', lineGap: GAP });
+  doc.text(noEmDash(teaching.resourcePerson), { align: 'justify', lineGap: GAP });
 
   // Certifications
   heading('Certifications & Training');

@@ -19,7 +19,7 @@
   "about": {
     "paragraphs": [
       "Clinical pharmacist and public health researcher with a **PhD in Public Health**, specialising in **digital health innovation, mHealth intervention design,** and cancer care delivery in low- and middle-income settings.",
-      "Author of **43 peer-reviewed publications** spanning oncology, digital health, public health, and medical education — including first-author work in **Annals of Oncology (IF 56.7)**, ESMO Open, and Journal of Oncology Pharmacy Practice — alongside 1 granted patent and multiple deployed digital health tools with active user bases.",
+      "Author of **45 peer-reviewed publications** spanning oncology, digital health, public health, and medical education - including first-author work in **Annals of Oncology (IF 56.7)**, ESMO Open, and Journal of Oncology Pharmacy Practice - alongside 1 granted patent and multiple deployed digital health tools with active user bases.",
       "Research expertise spans the full intervention lifecycle: user-centred co-design, psychometric scale development, quasi-experimental and target-trial emulation methods, health technology assessment, and machine-learning-assisted clinical decision support. Recognised by competitive international awards including **ESMO and JSMO Travel Grants**.",
       "Committed to translating rigorous implementation science into scalable, equitable digital health solutions for cancer and chronic disease management globally."
     ],
@@ -64,7 +64,7 @@
     },
     {
       "years": "Feb 2022 – Apr 2022",
-      "role": "Field Investigator — World Health Organization",
+      "role": "Field Investigator - World Health Organization",
       "org": "JSS Medical College, Mysuru",
       "bullets": ["Coordinated multi-centre study on oxygen requirements and respiratory support in COVID-19 patients in LMICs"]
     },
@@ -79,30 +79,30 @@
     { "amount": "INR 25,000", "name": "JSS AHER Research Fellowship", "desc": "Medical Technology-Based Smartphone Application in the Management of Cancer", "years": "2021 – 2024" },
     { "amount": "Institutional Grant", "name": "JSSAHER Institutional Research Grant", "desc": "Onco-Care User-Centred Design Study · Ref: JSSAHER/REG/RES/URG/54/2023-24/7931", "years": "2023 – 2024" },
     { "amount": "INR 1,00,000", "name": "Mamta HIMC Fellowship in Adolescent Mental Health", "desc": "Digital Health Intervention on Adolescent Mental Health (AikyaMind)", "years": "2022 – 2023" },
-    { "amount": "EUR 1,400", "name": "ESMO Travel Grant", "desc": "European Society of Medical Oncology — ESMO Asia / Breast Cancer Conference, Germany", "years": "2024 – 2025" },
-    { "amount": "JPY 1,00,000", "name": "JSMO Travel Grant", "desc": "Japanese Society of Medical Oncology — JSMO Annual Meeting, Japan", "years": "2024" }
+    { "amount": "EUR 1,400", "name": "ESMO Travel Grant", "desc": "European Society of Medical Oncology - ESMO Asia / Breast Cancer Conference, Germany", "years": "2024 – 2025" },
+    { "amount": "JPY 1,00,000", "name": "JSMO Travel Grant", "desc": "Japanese Society of Medical Oncology - JSMO Annual Meeting, Japan", "years": "2024" }
   ],
   "patent": {
     "text": "Hari Prakash G, Kumar SD, Yadav D, Sunitha S. A reflection-based intraoral imaging device for dental examination and a method of operating the device. Indian Patent Application No. 202541003820. Published January 31, 2025."
   },
   "inventions": [
-    { "icon": "📱", "name": "Onco Care App", "desc": "Comprehensive mHealth platform for cancer patients — remote monitoring, symptom tracking, chemotherapy planning, nutrition guidance, peer support.", "status": "live", "badge": "Google Play · onco-care.in", "link": "https://onco-care.in/", "image": "oncocare.jpeg" },
-    { "icon": "🧠", "name": "AikyaMind", "desc": "Adolescent mental health mHealth application — self-screening, counselling support, and educational resources.", "status": "live", "badge": "Google Play Store", "link": "" },
-    { "icon": "🔎", "name": "Prama AI", "desc": "AI-assisted collaborative systematic review & meta-analysis platform — PRISMA-adherent screening workflow, active learning, live team collaboration, forest and funnel plots.", "status": "live", "badge": "Web-based", "link": "https://www.pramanasrma.in/" },
-    { "icon": "🕸️", "name": "Sangam NMA", "desc": "Network meta-analysis workbench built on R/netmeta — league tables, rankings, node-splitting, publication-ready manuscript export.", "status": "live", "badge": "Web-based", "link": "https://sangam-web-production.up.railway.app" },
-    { "icon": "💰", "name": "Artha HE", "desc": "Health-economics workbench — costing, cost-utility/cost-benefit analysis, Markov modelling, probabilistic sensitivity analysis, budget impact.", "status": "live", "badge": "Web-based", "link": "https://artha-he-production.up.railway.app" },
-    { "icon": "🗣️", "name": "Vichara QDA", "desc": "Qualitative data analysis made simple — turn interviews and field notes into insight: code transcripts, build codebooks, develop themes, and run publication-grade analyses.", "status": "live", "badge": "Web-based", "link": "https://vicharaqda.in/" },
-    { "icon": "📈", "name": "VEDA", "desc": "General-purpose data analysis software for researchers — cleaning, descriptive and inferential statistics, and visualisation in one workbench.", "status": "development", "badge": "In Development", "link": "" },
+    { "icon": "📱", "name": "Onco Care App", "desc": "Comprehensive mHealth platform for cancer patients - remote monitoring, symptom tracking, chemotherapy planning, nutrition guidance, peer support.", "status": "live", "badge": "Google Play · onco-care.in", "link": "https://onco-care.in/", "image": "oncocare.jpeg" },
+    { "icon": "🧠", "name": "AikyaMind", "desc": "Adolescent mental health mHealth application - self-screening, counselling support, and educational resources.", "status": "live", "badge": "Google Play Store", "link": "" },
+    { "icon": "🔎", "name": "Prama AI", "desc": "AI-assisted collaborative systematic review & meta-analysis platform - PRISMA-adherent screening workflow, active learning, live team collaboration, forest and funnel plots.", "status": "live", "badge": "Web-based", "link": "https://www.pramanasrma.in/" },
+    { "icon": "🕸️", "name": "Sangam NMA", "desc": "Network meta-analysis workbench built on R/netmeta - league tables, rankings, node-splitting, publication-ready manuscript export.", "status": "live", "badge": "Web-based", "link": "https://sangam-web-production.up.railway.app" },
+    { "icon": "💰", "name": "Artha HE", "desc": "Health-economics workbench - costing, cost-utility/cost-benefit analysis, Markov modelling, probabilistic sensitivity analysis, budget impact.", "status": "live", "badge": "Web-based", "link": "https://artha-he-production.up.railway.app" },
+    { "icon": "🗣️", "name": "Vichara QDA", "desc": "Qualitative data analysis made simple - turn interviews and field notes into insight: code transcripts, build codebooks, develop themes, and run publication-grade analyses.", "status": "live", "badge": "Web-based", "link": "https://vicharaqda.in/" },
+    { "icon": "📈", "name": "VEDA", "desc": "General-purpose data analysis software for researchers - cleaning, descriptive and inferential statistics, and visualisation in one workbench.", "status": "development", "badge": "In Development", "link": "" },
     { "icon": "📊", "name": "SAM (Sample Size Calculator)", "desc": "Web-based sample size tool supporting 10+ study designs for researchers across disciplines.", "status": "live", "badge": "Web-based", "link": "" },
-    { "icon": "🩺", "name": "CRISP", "desc": "Colorectal Risk Intelligence & Screening Predictor — AI-powered clinical risk tool for colorectal cancer screening.", "status": "live", "badge": "crisp_ai.oneapp.dev", "link": "" },
+    { "icon": "🩺", "name": "CRISP", "desc": "Colorectal Risk Intelligence & Screening Predictor - AI-powered clinical risk tool for colorectal cancer screening.", "status": "live", "badge": "crisp_ai.oneapp.dev", "link": "" },
     { "icon": "⌚", "name": "Smart Wearable for Muscle Health", "desc": "Wearable prototype for detecting early signs of muscle wasting and fatigue in cancer care and rehabilitation.", "status": "prototype", "badge": "IIT Bombay MEDHA 2023", "link": "" },
-    { "icon": "📝", "name": "Pariksha", "desc": "Secure computer-based examination platform — randomised per-student papers, per-question timing, full-screen proctoring with tab-switch and copy-attempt logging, automatic grading, item analysis, and answer-similarity checks.", "status": "live", "badge": "Web-based", "link": "https://pariksha.drhari.co.in" }
+    { "icon": "📝", "name": "Pariksha", "desc": "Secure computer-based examination platform - randomised per-student papers, per-question timing, full-screen proctoring with tab-switch and copy-attempt logging, automatic grading, item analysis, and answer-similarity checks.", "status": "live", "badge": "Web-based", "link": "https://pariksha.drhari.co.in" }
   ],
   "ncdSuite": [
-    { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app — glucose logging, medication reminders, diet guidance.", "status": "development", "link": "", "image": "Glydecare.jpeg" },
+    { "condition": "Diabetes", "icon": "🩸", "name": "Glydecare", "desc": "Diabetes self-management app - glucose logging, medication reminders, diet guidance.", "status": "development", "link": "", "image": "Glydecare.jpeg" },
     { "condition": "Hypertension", "icon": "❤️", "name": "BP-Mitra", "desc": "Hypertension risk prediction and blood-pressure tracking app for personalised prevention.", "status": "live", "link": "https://github.com/Drhari730/BP-Mitra", "image": "BP Mitra.jpeg" },
-    { "condition": "Asthma", "icon": "🌬️", "name": "Shwasak", "desc": "Asthma management system — symptom tracking and trigger monitoring.", "status": "development", "link": "", "image": "shwasak.jpeg" },
-    { "condition": "COPD", "icon": "🫁", "name": "COPD Companion (planned)", "desc": "Respiratory symptom and exacerbation-risk tracker for COPD patients — in early planning.", "status": "planned", "link": "" },
+    { "condition": "Asthma", "icon": "🌬️", "name": "Shwasak", "desc": "Asthma management system - symptom tracking and trigger monitoring.", "status": "development", "link": "", "image": "shwasak.jpeg" },
+    { "condition": "COPD", "icon": "🫁", "name": "COPD Companion (planned)", "desc": "Respiratory symptom and exacerbation-risk tracker for COPD patients - in early planning.", "status": "planned", "link": "" },
     { "condition": "Cancer", "icon": "🎗️", "name": "Oncodiet", "desc": "Companion diet-recommendation app for oncology patients to support chemotherapy management.", "status": "development", "link": "", "image": "Oncodiet.jpeg" },
     { "condition": "Infectious Diseases", "icon": "💊", "name": "AURA", "desc": "Oral antibiotic adherence system with smart reminders and side effect monitoring.", "status": "live", "link": "", "image": "aura.jpeg" },
     { "condition": "TB", "icon": "🫧", "name": "TB-Mitra", "desc": "Tuberculosis medication adherence and patient support app.", "status": "development", "link": "", "image": "TB Mitra.jpeg" },

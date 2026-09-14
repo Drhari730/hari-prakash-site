@@ -57,7 +57,11 @@ function renderHero() {
 }
 
 function renderAbout() {
-  document.getElementById('aboutText').innerHTML = DATA.about.paragraphs.map(p => `<p>${md(p)}</p>`).join('');
+  const pubCount = (DATA.publications && DATA.publications.length) ? DATA.publications.length : 45;
+  document.getElementById('aboutText').innerHTML = DATA.about.paragraphs.map(p => {
+    const updated = p.replace(/Author of \*\*\d+ peer-reviewed publications\*\*/gi, `Author of **${pubCount} peer-reviewed publications**`);
+    return `<p>${md(updated)}</p>`;
+  }).join('');
   document.getElementById('interestsGrid').innerHTML = DATA.about.interests.map(i => `<span class="interest-chip">${esc(i)}</span>`).join('');
   document.getElementById('educationList').innerHTML = DATA.education.map(e => `
     <div class="edu-item">
