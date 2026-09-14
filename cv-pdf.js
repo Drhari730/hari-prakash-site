@@ -34,26 +34,46 @@ function citationTail(p) {
 }
 
 function generateCvPdf(content, res) {
-  const doc = new PDFDocument({ size: 'A4', margins: { top: 54, bottom: 56, left: 60, right: 60 } });
+  const doc = new PDFDocument({
+    size: 'A4',
+    margins: { top: 52, bottom: 54, left: 54, right: 54 },
+    bufferPages: true
+  });
   doc.pipe(res);
 
   const { profile, about, education, positions, grants, patent, inventions, publications, conferences, teaching, affiliations } = content;
 
-  const ruleColor = '#0f2340';
-  const accentColor = '#1a6b6b';
+  const navyColor = '#0f2340';
+  const tealColor = '#1a6b6b';
+  const goldColor = '#c47c3e';
   const textColor = '#1c1c1c';
-  const mutedColor = '#5a5a5a';
+  const mutedColor = '#555e6d';
+  const bannerBg = '#edf4f9';
   const BODY = 9.7;      // base body font size
   const GAP = 2.6;       // line gap within wrapped text blocks
 
   function heading(text) {
-    doc.moveDown(1.0);
-    doc.font('Times-Bold').fontSize(12).fillColor(ruleColor)
-      .text(text.toUpperCase(), { characterSpacing: 0.7, lineGap: 0 });
-    const y = doc.y + 3;
-    doc.moveTo(doc.page.margins.left, y).lineTo(doc.page.width - doc.page.margins.right, y)
-      .strokeColor(accentColor).lineWidth(0.9).stroke();
-    doc.moveDown(0.7);
+    if (doc.y > doc.page.height - 110) {
+      doc.addPage();
+    } else {
+      doc.moveDown(0.9);
+    }
+    const startY = doc.y;
+    const contentWidth = doc.page.width - doc.page.margins.left - doc.page.margins.right;
+    
+    // Soft tinted background banner
+    doc.roundedRect(doc.page.margins.left, startY, contentWidth, 22, 3)
+       .fillColor(bannerBg).fill();
+       
+    // Left decorative navy color bar
+    doc.roundedRect(doc.page.margins.left, startY, 4.5, 22, 1.5)
+       .fillColor(navyColor).fill();
+       
+    // Bold navy heading title
+    doc.font('Times-Bold').fontSize(11.5).fillColor(navyColor)
+       .text(text.toUpperCase(), doc.page.margins.left + 12, startY + 5.5, { characterSpacing: 0.8 });
+       
+    doc.y = startY + 28;
     doc.fillColor(textColor);
   }
 
@@ -64,18 +84,22 @@ function generateCvPdf(content, res) {
     doc.moveDown(gap);
   }
 
-  // Header
-  doc.font('Times-Bold').fontSize(23).fillColor(textColor).text(profile.name.toUpperCase(), { align: 'center', characterSpacing: 0.5 });
+  // Header (Page 1)
+  doc.font('Times-Bold').fontSize(24).fillColor(navyColor).text(profile.name.toUpperCase(), { align: 'center', characterSpacing: 0.6 });
   doc.moveDown(0.35);
-  doc.font('Times-Roman').fontSize(11).fillColor(mutedColor).text(noEmDash(profile.credentials), { align: 'center' });
+  doc.font('Times-Bold').fontSize(10.8).fillColor(tealColor).text(noEmDash(profile.credentials), { align: 'center' });
   doc.moveDown(0.35);
-  doc.fontSize(9.5).fillColor(mutedColor).text(
+  doc.fontSize(9.3).font('Times-Roman').fillColor(mutedColor).text(
     `www.drhari.co.in    |    ${profile.email}    |    ${profile.phone}    |    ORCID: ${profile.orcid}`,
     { align: 'center' }
   );
   doc.moveDown(0.55);
+  
+  // Dual-tone accent rule below header
   const hy = doc.y;
-  doc.moveTo(doc.page.margins.left, hy).lineTo(doc.page.width - doc.page.margins.right, hy).strokeColor(ruleColor).lineWidth(1.4).stroke();
+  doc.moveTo(doc.page.margins.left, hy).lineTo(doc.page.width - doc.page.margins.right, hy).strokeColor(navyColor).lineWidth(1.8).stroke();
+  doc.moveTo(doc.page.margins.left, hy + 3).lineTo(doc.page.width - doc.page.margins.right, hy + 3).strokeColor(tealColor).lineWidth(0.8).stroke();
+  doc.y = hy + 8;
   doc.fillColor(textColor);
 
   // Research profile
@@ -92,7 +116,8 @@ function generateCvPdf(content, res) {
   // Education
   heading('Education');
   education.forEach(e => {
-    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(noEmDash(`${e.degree} - ${e.institution}`), { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(navyColor).text(noEmDash(e.degree), { continued: true, lineGap: 1 });
+    doc.font('Times-Roman').fillColor(tealColor).text(noEmDash(` - ${e.institution}`), { lineGap: 1 });
     doc.font('Times-Roman').fontSize(9.3).fillColor(mutedColor).text(noEmDash(e.years));
     if (e.thesis) doc.font('Times-Italic').fontSize(9.3).fillColor(mutedColor).text(noEmDash(`Thesis: ${e.thesis}`), { lineGap: 1 });
     doc.fillColor(textColor);
@@ -102,8 +127,9 @@ function generateCvPdf(content, res) {
   // Positions
   heading('Academic & Professional Positions');
   positions.forEach(p => {
-    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(noEmDash(p.role), { lineGap: 1 });
-    doc.font('Times-Italic').fontSize(9.5).fillColor(mutedColor).text(noEmDash(`${p.org}  ·  ${p.years}`), { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(navyColor).text(noEmDash(p.role), { lineGap: 1 });
+    doc.font('Times-Italic').fontSize(9.5).fillColor(tealColor).text(noEmDash(p.org), { continued: true, lineGap: 1 });
+    doc.font('Times-Roman').fillColor(mutedColor).text(noEmDash(`  ·  ${p.years}`), { lineGap: 1 });
     doc.moveDown(0.2);
     doc.fillColor(textColor);
     (p.bullets || []).forEach(b => bullet(b, 0.18));
@@ -113,7 +139,8 @@ function generateCvPdf(content, res) {
   // Grants
   heading('Grants & Fellowships');
   grants.forEach(g => {
-    doc.font('Times-Bold').fontSize(10).fillColor(textColor).text(noEmDash(`${g.name} (${g.amount})`), { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10).fillColor(navyColor).text(noEmDash(g.name), { continued: true, lineGap: 1 });
+    doc.font('Times-Bold').fillColor(goldColor).text(` (${g.amount})`, { lineGap: 1 });
     doc.font('Times-Roman').fontSize(9.3).fillColor(mutedColor).text(noEmDash(`${g.desc}  ·  ${g.years}`), { lineGap: GAP });
     doc.fillColor(textColor);
     doc.moveDown(0.45);
@@ -122,14 +149,14 @@ function generateCvPdf(content, res) {
   // Digital health inventions
   heading('Digital Health Inventions & Tools');
   inventions.forEach(inv => {
-    doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text(noEmDash(inv.name) + ': ', { continued: true, align: 'justify' });
+    doc.font('Times-Bold').fontSize(BODY).fillColor(navyColor).text(noEmDash(inv.name) + ': ', { continued: true, align: 'justify' });
     doc.font('Times-Roman').fillColor(textColor).text(noEmDash(inv.desc), { align: 'justify', lineGap: GAP });
     doc.moveDown(0.32);
   });
   if (patent && patent.text) {
     doc.moveDown(0.15);
-    doc.font('Times-Bold').fontSize(BODY).text('Patent: ', { continued: true });
-    doc.font('Times-Roman').text(noEmDash(patent.text), { lineGap: GAP });
+    doc.font('Times-Bold').fontSize(BODY).fillColor(goldColor).text('Patent: ', { continued: true });
+    doc.font('Times-Roman').fillColor(textColor).text(noEmDash(patent.text), { lineGap: GAP });
   }
 
   // Publications
@@ -140,13 +167,10 @@ function generateCvPdf(content, res) {
   Object.keys(CAT_LABELS).forEach(cat => {
     if (!byCat[cat]) return;
     doc.moveDown(0.25);
-    doc.font('Times-Bold').fontSize(10.5).fillColor(accentColor).text(CAT_LABELS[cat], { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(tealColor).text('▪  ' + CAT_LABELS[cat], { lineGap: 1 });
     doc.moveDown(0.3);
     doc.fillColor(textColor).font('Times-Roman').fontSize(9.4);
     byCat[cat].forEach(p => {
-      // Bold only the author's own name (first occurrence). The citation tail is merged
-      // into the text run *after* the name so there is no `continued` boundary at the
-      // period — which otherwise makes PDFKit insert a stray space ("Kulkarni P . Title").
       doc.font('Times-Roman').fontSize(9.4).fillColor(textColor);
       OWN_NAME_RE.lastIndex = 0;
       const m = OWN_NAME_RE.exec(p.authors);
@@ -157,8 +181,8 @@ function generateCvPdf(content, res) {
         const before = `${n}. ` + p.authors.slice(0, m.index);
         const after = p.authors.slice(m.index + m[0].length) + tail;
         doc.text(noEmDash(before), { continued: true, align: 'justify', lineGap: GAP });
-        doc.font('Times-Bold').text(noEmDash(m[0]), { continued: true });
-        doc.font('Times-Roman').text(noEmDash(after), { continued: false, align: 'justify', lineGap: GAP });
+        doc.font('Times-Bold').fillColor(navyColor).text(noEmDash(m[0]), { continued: true });
+        doc.font('Times-Roman').fillColor(textColor).text(noEmDash(after), { continued: false, align: 'justify', lineGap: GAP });
       }
       doc.moveDown(0.42);
       n += 1;
@@ -175,8 +199,8 @@ function generateCvPdf(content, res) {
 
   // Teaching
   heading('Teaching, Workshops & Consultations');
-  doc.font('Times-Bold').fontSize(BODY).fillColor(textColor).text('Courses taught: ', { continued: true, align: 'justify' });
-  doc.font('Times-Roman').text(noEmDash(teaching.courses.join(', ')), { align: 'justify', lineGap: GAP });
+  doc.font('Times-Bold').fontSize(BODY).fillColor(navyColor).text('Courses taught: ', { continued: true, align: 'justify' });
+  doc.font('Times-Roman').fillColor(textColor).text(noEmDash(teaching.courses.join(', ')), { align: 'justify', lineGap: GAP });
   doc.moveDown(0.4);
   doc.font('Times-Roman').fontSize(BODY).text(noEmDash(teaching.thesisSupervision), { align: 'justify', lineGap: GAP });
   doc.moveDown(0.4);
@@ -208,11 +232,33 @@ function generateCvPdf(content, res) {
   ];
   
   refs.forEach(r => {
-    doc.font('Times-Bold').fontSize(10.5).fillColor(textColor).text(r.name, { lineGap: 1 });
+    doc.font('Times-Bold').fontSize(10.5).fillColor(navyColor).text(r.name, { lineGap: 1 });
     doc.font('Times-Roman').fontSize(9.5).fillColor(mutedColor).text(r.title, { lineGap: 1 });
-    doc.font('Times-Roman').fillColor(accentColor).text(r.contact, { lineGap: GAP });
+    doc.font('Times-Roman').fillColor(tealColor).text(r.contact, { lineGap: GAP });
     doc.moveDown(0.35);
   });
+
+  // Post-processing: Decorative Navy borders & running footers on EVERY page
+  const range = doc.bufferedPageRange();
+  for (let i = range.start; i < range.start + range.count; i++) {
+    doc.switchToPage(i);
+    const w = doc.page.width;
+    const h = doc.page.height;
+    
+    // Outer navy border
+    doc.rect(20, 20, w - 40, h - 40).strokeColor(navyColor).lineWidth(1.2).stroke();
+    
+    // Top decorative bar: Navy + Teal stripe
+    doc.rect(20, 20, w - 40, 5).fillColor(navyColor).fill();
+    doc.rect(20, 25, w - 40, 2).fillColor(tealColor).fill();
+    
+    // Bottom thin divider & page footer
+    doc.moveTo(34, h - 36).lineTo(w - 34, h - 36).strokeColor('#e2e8f0').lineWidth(0.8).stroke();
+    doc.font('Times-Roman').fontSize(8.5).fillColor(mutedColor)
+       .text('Dr G. Hari Prakash  |  Curriculum Vitae', 34, h - 29, { align: 'left', width: 250 });
+    doc.font('Times-Roman').fontSize(8.5).fillColor(mutedColor)
+       .text(`Page ${i + 1} of ${range.count}`, w - 234, h - 29, { align: 'right', width: 200 });
+  }
 
   doc.end();
 }
