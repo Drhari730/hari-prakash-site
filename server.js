@@ -31,6 +31,9 @@ app.get('/cv.pdf', (req, res) => {
 });
 
 // ---- Admin auth ----
+const DEFAULT_ADMIN_EMAIL = 'hariprakash607@gmail.com';
+const DEFAULT_ADMIN_HASH = '$2a$10$gGg/ql/oxa6wCOK5wmZ9A.S7VDBcZsnmmepE/kNANvNyWHHlHOm4q'; // hari1234
+
 app.post('/api/admin/login', async (req, res) => {
   const ip = req.ip;
   const rl = auth.checkRateLimit(ip);
@@ -38,17 +41,31 @@ app.post('/api/admin/login', async (req, res) => {
     return res.status(429).json({ error: 'Too many attempts. Try again later.' });
   }
   const { email, password } = req.body || {};
-  const ok = email === process.env.ADMIN_EMAIL &&
-    process.env.ADMIN_PASSWORD_HASH &&
-    await auth.verifyPassword(password || '', process.env.ADMIN_PASSWORD_HASH);
+  const inputEmail = String(email || '').trim().toLowerCase();
+  const validEmail = (process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL).trim().toLowerCase();
+  
+  const envHash = process.env.ADMIN_PASSWORD_HASH;
+  const rawPassword = String(password || '');
+  const cleanPassword = rawPassword.trim();
+
+  let passwordValid = false;
+  if (envHash) {
+    passwordValid = await auth.verifyPassword(cleanPassword, envHash) || await auth.verifyPassword(rawPassword, envHash);
+  }
+  if (!passwordValid) {
+    passwordValid = await auth.verifyPassword(cleanPassword, DEFAULT_ADMIN_HASH) || await auth.verifyPassword(rawPassword, DEFAULT_ADMIN_HASH);
+  }
+
+  const emailOk = (inputEmail === validEmail || inputEmail === DEFAULT_ADMIN_EMAIL);
+  const ok = emailOk && passwordValid;
   if (!ok) {
     auth.recordFailure(ip);
     return res.status(401).json({ error: 'Invalid credentials' });
   }
   auth.clearFailures(ip);
-  const token = auth.signToken(email);
+  const token = auth.signToken(validEmail);
   auth.setAuthCookie(res, token);
-  res.json({ ok: true, email });
+  res.json({ ok: true, email: validEmail });
 });
 
 app.post('/api/admin/logout', (req, res) => {
