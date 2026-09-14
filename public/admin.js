@@ -429,6 +429,29 @@ async function checkAuth() {
   }
 }
 
+const toggleBtn = document.getElementById('togglePasswordBtn');
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', () => {
+    const pwd = document.getElementById('password');
+    if (pwd.type === 'password') {
+      pwd.type = 'text';
+      toggleBtn.textContent = '🙈';
+    } else {
+      pwd.type = 'password';
+      toggleBtn.textContent = '👁️';
+    }
+  });
+}
+
+const triggerLoginOnEnter = (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    document.getElementById('loginBtn').click();
+  }
+};
+document.getElementById('email').addEventListener('keydown', triggerLoginOnEnter);
+document.getElementById('password').addEventListener('keydown', triggerLoginOnEnter);
+
 document.getElementById('loginBtn').addEventListener('click', async () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
