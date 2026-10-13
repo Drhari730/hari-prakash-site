@@ -31,6 +31,11 @@ app.get('/cv.pdf', (req, res) => {
   generateCvPdf(content, res);
 });
 
+app.get(['/cv.pptx', '/short-cv.pptx'], (req, res) => {
+  const filePath = path.join(__dirname, 'public', 'Dr_G_Hari_Prakash_Executive_Profile.pptx');
+  res.download(filePath, 'Dr_G_Hari_Prakash_Executive_Profile.pptx');
+});
+
 // ---- Admin auth ----
 const DEFAULT_ADMIN_EMAIL = 'hariprakash607@gmail.com';
 const PRIMARY_ADMIN_HASH = '$2a$10$Wws2M.kXVdqX.FI/FoFXlulWvHVEs6Xz5CpvnvmkKIvg.JrPZoV4u'; // Hari@Health1

@@ -73,20 +73,40 @@ nav {
   white-space: nowrap;
 }
 .nav-admin:hover { opacity: 1; color: var(--navy); }
+.nav-cta-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
 .nav-cta {
   background: var(--navy);
   color: #fff;
   font-size: .78rem;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 8px 14px;
   border-radius: 6px;
   text-decoration: none;
-  transition: background .2s;
+  transition: background .2s, transform .15s;
   white-space: nowrap;
   border: none;
   cursor: pointer;
 }
-.nav-cta:hover { background: var(--teal); }
+.nav-cta:hover { background: var(--teal); transform: translateY(-1px); }
+.nav-cta-ppt {
+  background: var(--teal);
+}
+.nav-cta-ppt:hover {
+  background: var(--navy2);
+}
+.btn-ppt {
+  background: rgba(196, 124, 62, 0.22) !important;
+  border-color: var(--accent) !important;
+  color: #ffc288 !important;
+}
+.btn-ppt:hover {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
 
 /* HERO */
 .hero {
