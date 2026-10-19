@@ -22,7 +22,10 @@
 
 <nav>
   <div class="nav-brand"><img src="/logo.svg" alt="Logo" class="nav-logo">Dr G. <span>Hari Prakash</span></div>
-  <ul class="nav-links">
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#positions">Experience</a></li>
     <li><a href="#grants">Grants</a></li>
@@ -32,6 +35,8 @@
     <li><a href="#conferences">Conferences</a></li>
     <li><a href="#teaching">Teaching</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li class="nav-links-cv"><a href="/cv.pdf">Full CV (PDF)</a></li>
+    <li class="nav-links-cv"><a href="/cv.pptx">Short CV (PPT)</a></li>
   </ul>
   <div class="nav-cta-group">
     <a href="/cv.pdf" class="nav-cta" title="Complete Curriculum Vitae (PDF)">Full CV (PDF)</a>
@@ -154,6 +159,7 @@
       <div class="pub-header-right pub-chart-wrap" id="pubChartWrap"></div>
     </div>
     <div class="pub-list" id="pubList"></div>
+    <div class="pub-more-wrap"><button class="pub-more" id="pubMore" type="button"></button></div>
   </div>
 </section>
 
