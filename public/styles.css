@@ -63,6 +63,17 @@ nav {
   transition: color .2s;
 }
 .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+.nav-links-cv { display: none; }
+.nav-toggle {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 40px; height: 40px; padding: 0 9px;
+  background: none; border: 1px solid var(--rule); border-radius: 8px; cursor: pointer;
+}
+.nav-toggle span { display: block; height: 2px; background: var(--navy); border-radius: 2px; transition: transform .2s, opacity .2s; }
+nav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+nav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .nav-admin {
   font-size: .74rem;
   font-weight: 500;
@@ -425,6 +436,10 @@ section { padding: 90px 5vw; }
 }
 .pub-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,.07); }
 .pub-card[data-hidden="true"] { display: none; }
+.pub-more-wrap { text-align: center; margin-top: 28px; }
+.pub-more { font-size: .85rem; font-weight: 600; color: var(--teal); background: #fff; border: 1px solid var(--teal); padding: 10px 26px; border-radius: 24px; cursor: pointer; transition: background .2s, color .2s; }
+.pub-more:hover { background: var(--teal); color: #fff; }
+.pub-more[hidden] { display: none; }
 .pub-num { font-size: .82rem; font-weight: 700; color: var(--navy); padding-top: 2px; }
 .pub-title { font-size: .88rem; font-weight: 600; color: var(--navy); line-height: 1.45; margin-bottom: 6px; min-height: 2.6em; display: flex; align-items: center; }
 .pub-authors { font-size: .76rem; color: var(--navy2); margin-bottom: 6px; line-height: 1.4; padding-top: 8px; border-top: 1px dashed var(--rule); }
@@ -432,7 +447,7 @@ section { padding: 90px 5vw; }
 .pub-journal { font-size: .78rem; font-style: italic; color: var(--teal); font-weight: 500; }
 .pub-meta { display: flex; align-items: center; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
 .pub-year { font-size: .72rem; color: var(--navy2); }
-.pub-doi { font-size: .72rem; color: var(--navy); text-decoration: none; }
+.pub-doi { font-size: .72rem; color: var(--teal); font-weight: 500; text-decoration: none; }
 .pub-doi:hover { text-decoration: underline; }
 .pub-cat-badge { font-size: .64rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; border-radius: 4px; padding: 2px 7px; }
 .cat-oncology { background: #eef2ff; color: #4f46e5; }
@@ -480,7 +495,24 @@ footer a:hover { color: rgba(255,255,255,.7); }
   .about-grid { grid-template-columns: 1fr; }
   .pos-item { grid-template-columns: 1fr; }
   .pos-dot { display: none; }
-  .nav-links { display: none; }
+  nav { gap: 12px; }
+  .nav-toggle { display: flex; order: 3; }
+  .nav-links {
+    display: none;
+    position: absolute; top: var(--nav-h); left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: #fff; border-bottom: 1px solid var(--rule);
+    box-shadow: 0 12px 24px rgba(15,35,64,.08);
+    padding: 8px 5vw 16px;
+    max-height: calc(100vh - var(--nav-h)); overflow-y: auto;
+  }
+  nav.open .nav-links { display: flex; }
+  .nav-links a { display: block; padding: 12px 0; font-size: .95rem; border-bottom: 1px solid var(--rule); }
+}
+@media (max-width: 600px) {
+  .nav-cta-group { display: none; }
+  .nav-links-cv { display: block; }
+  .nav-links-cv a { color: var(--teal); font-weight: 600; }
 }
 
 .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }

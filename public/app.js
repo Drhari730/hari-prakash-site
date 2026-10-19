@@ -30,16 +30,21 @@ function renderHero() {
   if (p.stats && p.stats.length > 0) {
     p.stats[0].num = DATA.publications.length;
   }
+  if (p.stats && p.stats.length > 1 && DATA.inventions) {
+    p.stats[1].num = DATA.inventions.length;
+  }
   document.getElementById('heroEyebrow').innerHTML = `
     <span class="hero-role-pill">Assistant Professor</span>
     <span>${esc(p.eyebrow)}</span>
   `;
   document.getElementById('heroName').textContent = p.name;
-  document.getElementById('heroSub').innerHTML = `${esc(p.credentials)}<br>${esc(p.tagline)}`;
-  document.getElementById('heroTags').innerHTML = p.tags.map(t => {
-    const isRole = t.toLowerCase().includes('assistant professor');
-    return `<span class="hero-tag ${isRole ? 'hero-tag-role' : ''}">${esc(t)}</span>`;
-  }).join('');
+  // The role is already shown in the eyebrow pill, so drop it from the degrees line and tags.
+  const degrees = p.credentials.replace(/^Assistant Professor\s*·\s*/i, '');
+  document.getElementById('heroSub').innerHTML = `${esc(degrees)}<br>${esc(p.tagline)}`;
+  document.getElementById('heroTags').innerHTML = p.tags
+    .filter(t => !/assistant professor/i.test(t))
+    .map(t => `<span class="hero-tag">${esc(t)}</span>`)
+    .join('');
   document.getElementById('heroStats').innerHTML = p.stats.map((s, i) => `
     ${i > 0 ? '<div class="stat-divider"></div>' : ''}
     <div class="stat-row"><div class="stat-num">${esc(s.num)}</div><div class="stat-label">${esc(s.label)}</div></div>
@@ -164,7 +169,22 @@ window.openLightbox = function(src) {
   lb.classList.add('active');
 };
 
+const PUB_PREVIEW_COUNT = 10;
 let activePubFilter = 'all';
+let showAllPubs = false;
+
+function applyPubVisibility() {
+  const total = DATA.publications.length;
+  const btn = document.getElementById('pubMore');
+  // A category filter shows every match; the preview limit applies only to "All".
+  const limit = activePubFilter === 'all' && !showAllPubs;
+  document.querySelectorAll('.pub-card').forEach((card, i) => {
+    const matches = activePubFilter === 'all' || card.dataset.cat === activePubFilter;
+    card.dataset.hidden = (!matches || (limit && i >= PUB_PREVIEW_COUNT)) ? 'true' : 'false';
+  });
+  btn.hidden = activePubFilter !== 'all' || total <= PUB_PREVIEW_COUNT;
+  btn.textContent = showAllPubs ? 'Show fewer publications' : `Show all ${total} publications`;
+}
 function renderPublications() {
   const pubs = DATA.publications;
   document.getElementById('pubCountLabel').textContent = `(${pubs.length} peer-reviewed)`;
@@ -230,12 +250,18 @@ function renderPublications() {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.pub-filter').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.pub-card').forEach(card => {
-        card.dataset.hidden = (filter !== 'all' && card.dataset.cat !== filter) ? 'true' : 'false';
-      });
+      activePubFilter = btn.dataset.filter;
+      applyPubVisibility();
     });
   });
+
+  document.getElementById('pubMore').addEventListener('click', () => {
+    const wasExpanded = showAllPubs;
+    showAllPubs = !showAllPubs;
+    applyPubVisibility();
+    if (wasExpanded) document.getElementById('publications').scrollIntoView({ behavior: 'smooth' });
+  });
+  applyPubVisibility();
 }
 
 function renderConferences() {
@@ -274,6 +300,19 @@ function renderContact() {
   document.getElementById('footerText').textContent = `© ${new Date().getFullYear()} ${p.name} · ${p.credentials}`;
 }
 
+function initMobileNav() {
+  const nav = document.querySelector('nav');
+  const toggle = document.getElementById('navToggle');
+  const setOpen = open => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  };
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+}
+
 function initScrollEffects() {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -302,4 +341,5 @@ renderPublications();
 renderConferences();
 renderTeaching();
 renderContact();
+initMobileNav();
 initScrollEffects();
